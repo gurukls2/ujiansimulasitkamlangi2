@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIMULASI TES KEMAMPUAN AKADEMIK (TKA) - UPT SD NEGERI MLANGI 2 TAHUN 2027</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Font khusus judul utama */
+    .font-arial-nova {
+      font-family: 'Arial Nova Cond', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    /* Font khusus isi bacaan, pokok soal, petunjuk soal, dan opsi (Arial 11pt) */
+    .font-arial-11 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+      line-height: 1.65;
+    }
+
+    /* Font khusus sumber bacaan (Arial 8pt miring) */
+    .font-arial-8-italic {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 8pt;
+      font-style: italic;
+    }
+
+    /* Custom scrollbar halus */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen antialiased selection:bg-blue-200 selection:text-blue-900">
+
+  <!-- ==================== HALAMAN 1: MENU AWAL / PENGISIAN IDENTITAS ==================== -->
+  <section id="loginPage" class="min-h-screen flex flex-col justify-center items-center px-4 py-8 bg-slate-50 relative">
+    <div class="w-full max-w-md mx-auto">
+      <!-- Notifikasi otomatis jika waktu ujian sebelumnya habis -->
+      <div id="timeUpNotice" class="hidden mb-4 rounded-xl bg-amber-50 border border-amber-300 p-3.5 text-amber-900 text-xs sm:text-sm flex items-start gap-2.5">
+        <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div>
+          <p class="font-bold">Waktu Pengerjaan (75 Menit) Telah Habis!</p>
+          <p>Jawaban Anda telah disimpan otomatis oleh sistem.</p>
+        </div>
+      </div>
+
+      <!-- Kartu Minimalis Halaman Awal -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <!-- Bagian Tengah Atas: Logo Kabupaten Tuban dan Tut Wuri Handayani -->
+        <div class="flex items-center justify-center gap-6 mb-5">
+          <!-- Logo Kabupaten Tuban -->
+          <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center overflow-hidden">
+            <img
+              src="logo tuban.png"
+              alt="Logo Kabupaten Tuban"
+              class="w-full h-full object-contain"
+              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+            />
+            <!-- Fallback Vektor Lambang Kabupaten Tuban -->
+            <svg class="hidden w-full h-full" viewBox="0 0 160 190" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22,22 L138,22 L138,112 C138,148 112,170 80,180 C48,170 22,148 22,112 Z" fill="#ffffff" stroke="#1e293b" stroke-width="3"/>
+              <path d="M27,27 L133,27 L133,111 C133,144 109,164 80,174 C51,164 27,144 27,111 Z" fill="#facc15"/>
+              <path d="M32,31 L55,31 L67,112 L32,112 Z" fill="#dc2626"/>
+              <path d="M55,31 L105,31 L93,112 L67,112 Z" fill="#0ea5e9"/>
+              <path d="M105,31 L128,31 L128,112 L93,112 Z" fill="#0f172a"/>
+              <path d="M32,112 L128,112 C126,141 105,159 80,168 C55,159 34,141 32,112 Z" fill="#1d4ed8"/>
+              <polygon points="80,38 83,46 92,46 85,51 87,59 80,54 73,59 75,51 68,46 77,46" fill="#fde047"/>
+              <path d="M62,108 L62,68 L72,62 L72,108 Z M98,108 L98,68 L88,62 L88,108 Z" fill="#ffffff"/>
+              <ellipse cx="80" cy="86" rx="7" ry="12" fill="#0f172a"/>
+              <path d="M56,115 Q80,126 104,115 L98,125 Q80,132 62,125 Z" fill="#eab308"/>
+              <rect x="52" y="138" width="56" height="12" rx="4" fill="#16a34a" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="80" y="147" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">TUBAN</text>
+            </svg>
+          </div>
+
+          <!-- Logo Tut Wuri Handayani -->
+          <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center overflow-hidden">
+            <img
+              src="OIP_2.jpg"
+              alt="Logo Tut Wuri Handayani"
+              class="w-full h-full object-contain"
+              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+            />
+            <!-- Fallback Vektor Presisi Tinggi Tut Wuri Handayani -->
+            <svg class="hidden w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="tutwuriArc" d="M 32,74 Q 100,24 168,74" fill="none" />
+              </defs>
+              <polygon points="100,8 190,68 158,186 42,186 10,68" fill="#0095da" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+              <text font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" letter-spacing="0.8">
+                <textPath href="#tutwuriArc" startOffset="50%" text-anchor="middle">TUTWURI HANDAYANI</textPath>
+              </text>
+              <path d="M78,96 L68,58 L82,63 L90,48 L100,56 L110,48 L118,63 L132,58 L122,96 Z" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+              <path d="M84,106 C64,92 36,92 32,76 C24,96 32,126 58,136 C68,140 78,140 86,136 Z" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+              <path d="M116,106 C136,92 164,92 168,76 C176,96 168,126 142,136 C132,140 122,140 114,136 Z" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+              <ellipse cx="100" cy="112" rx="16" ry="24" fill="#ffffff" stroke="#111827" stroke-width="3" />
+              <path d="M100,95 C108,105 108,118 100,126 C92,118 92,105 100,95 Z" fill="#fff200" stroke="#111827" stroke-width="2.5" />
+              <path d="M46,146 Q73,138 100,148 Q127,138 154,146 L150,164 Q125,155 100,165 Q75,155 50,164 Z" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+              <line x1="100" y1="148" x2="100" y2="165" stroke="#111827" stroke-width="3" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Judul Utama Rata Tengah menggunakan Arial Nova Cond -->
+        <h1 class="font-arial-nova text-center font-bold text-xl sm:text-2xl text-slate-900 tracking-wide leading-snug uppercase mb-6 pb-5 border-b border-slate-100">
+          SIMULASI TES KEMAMPUAN AKADEMIK (TKA)<br />
+          UPT SD NEGERI MLANGI 2 TAHUN 2027
+        </h1>
+
+        <!-- Form Pengisian Identitas Peserta -->
+        <form id="loginForm" class="space-y-4" novalidate>
+          <div>
+            <label for="namaSiswa" class="block text-xs font-semibold text-slate-600 mb-1">Nama</label>
+            <input
+              type="text"
+              id="namaSiswa"
+              required
+              placeholder="Nama Lengkap"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none text-sm transition"
+            />
+          </div>
+
+          <div>
+            <label for="kelasSiswa" class="block text-xs font-semibold text-slate-600 mb-1">Kelas</label>
+            <input
+              type="text"
+              id="kelasSiswa"
+              required
+              placeholder="Kelas, contoh 6A"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none text-sm transition"
+            />
+          </div>
+
+          <div>
+            <label for="inputNisn" class="block text-xs font-semibold text-slate-600 mb-1">NISN</label>
+            <input
+              type="text"
+              id="inputNisn"
+              inputmode="numeric"
+              required
+              placeholder="Masukkan NISN"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none text-sm transition"
+            />
+          </div>
+
+          <div>
+            <label for="inputToken" class="block text-xs font-semibold text-slate-600 mb-1">Token</label>
+            <input
+              type="text"
+              id="inputToken"
+              required
+              autocomplete="off"
+              placeholder="Masukkan token"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none text-sm uppercase tracking-widest font-semibold transition"
+            />
+          </div>
+
+          <!-- Pesan Error Token Salah -->
+          <div id="tokenErrorBox" class="hidden rounded-xl bg-red-50 border border-red-300 p-3 text-red-700 text-xs font-medium">
+            <span id="tokenErrorText">Maaf, token yang Anda masukkan salah. Silakan ulangi Kembali.</span>
+          </div>
+
+          <!-- Tombol Mulai -->
+          <button
+            type="submit"
+            class="w-full py-2.5 px-5 rounded-xl bg-blue-700 hover:bg-blue-800 active:scale-[0.99] text-white font-semibold text-sm transition cursor-pointer mt-2"
+          >
+            Masuk
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Kredit Pojok Kanan Bawah -->
+    <div class="fixed bottom-3 right-4 z-10 text-xs text-slate-500 font-medium">
+      Dibuat oleh: <span class="text-slate-700 font-semibold">Fauzia Hanim Zulfah</span>
+    </div>
+  </section>
+
+  <!-- Canvas tersembunyi untuk pemrosesan deteksi wajah & gerak -->
+  <canvas id="proctorCanvas" width="160" height="120" class="hidden"></canvas>
+
+  <!-- Modal Peringatan & Jeda (Pause) Ujian Apabila Wajah Tidak Terdeteksi -->
+  <div id="facePauseModal" class="hidden fixed inset-0 z-[70] bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl border-2 border-rose-500 overflow-hidden text-center">
+      <div class="bg-rose-600 px-6 py-4 text-white flex items-center justify-center gap-2.5">
+        <svg class="w-6 h-6 text-amber-200 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <h3 class="text-base sm:text-lg font-extrabold uppercase tracking-wide">Peringatan Pengawas Ujian!</h3>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">
+          <span>⏸ Pengerjaan Soal Dijeda Sementara</span>
+        </div>
+        <p id="facePauseText" class="text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
+          Wajah Anda tidak terdeteksi di depan kamera pengawas. Pengerjaan soal dijeda sementara. Posisikan wajah Anda kembali menghadap layar sebelum melanjutkan!
+        </p>
+        <button
+          type="button"
+          onclick="acknowledgeFaceWarning()"
+          class="w-full py-3 px-5 rounded-xl bg-rose-600 hover:bg-rose-700 active:scale-[0.99] text-white font-bold text-sm sm:text-base shadow-lg shadow-rose-600/25 transition cursor-pointer"
+        >
+          Saya Mengerti, Lanjutkan Ujian
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner Peringatan Mengambang (Untuk Halaman Awal / Modal Konfirmasi) -->
+  <div id="faceWarningBanner" class="hidden fixed top-4 left-1/2 -translate-x-1/2 z-[60] w-[92%] max-w-lg bg-rose-600 text-white rounded-2xl shadow-2xl border-2 border-rose-300 px-4 py-3.5 flex items-center gap-3 animate-bounce">
+    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+      </svg>
+    </div>
+    <div class="text-left">
+      <p class="font-extrabold text-xs sm:text-sm uppercase tracking-wide">Peringatan Pengawas Ujian!</p>
+      <p id="faceWarningText" class="text-xs text-rose-100 leading-snug">
+        Wajah tidak terdeteksi di depan kamera. Harap tetap menghadap ke layar!
+      </p>
+    </div>
+  </div>
+
+  <!-- ==================== POP-UP KONFIRMASI IDENTITAS & PETUNJUK ==================== -->
+  <div id="instructionModal" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-auto">
+      <!-- Header Modal -->
+      <div class="bg-blue-800 px-6 py-4 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <svg class="w-6 h-6 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <h3 class="text-lg sm:text-xl font-bold tracking-wide">Konfirmasi Identitas & Petunjuk Pengerjaan</h3>
+        </div>
+        <button onclick="closeInstructionModal()" class="text-blue-200 hover:text-white p-1 rounded-lg transition cursor-pointer" title="Tutup">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Isi Modal -->
+      <div class="p-6 space-y-5">
+        <!-- Ringkasan Identitas Peserta + Preview Kamera Pengawas -->
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <div class="flex flex-col md:flex-row gap-4 items-stretch justify-between">
+            <div class="flex-1 flex flex-col justify-between">
+              <p class="text-xs font-bold uppercase tracking-wider text-blue-700 mb-2.5">Data Peserta Uji Coba TKA 2027</p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-sm">
+                <div class="bg-white p-3 rounded-lg border border-blue-100">
+                  <span class="block text-xs text-slate-500">Nama Peserta</span>
+                  <span id="confirmNama" class="font-bold text-slate-900 text-sm sm:text-base break-words">-</span>
+                </div>
+                <div class="bg-white p-3 rounded-lg border border-blue-100">
+                  <span class="block text-xs text-slate-500">NISN</span>
+                  <span id="confirmNisn" class="font-bold text-slate-900 text-sm sm:text-base">-</span>
+                </div>
+                <div class="bg-white p-3 rounded-lg border border-blue-100">
+                  <span class="block text-xs text-slate-500">Token Akses</span>
+                  <span id="confirmToken" class="font-bold text-emerald-700 text-sm sm:text-base tracking-wider">-</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preview Kamera Pengawas di Bagian Konfirmasi -->
+            <div id="modalProctorBox" class="w-full md:w-52 shrink-0 bg-slate-900 text-white rounded-xl p-2 border-2 border-slate-700 flex flex-col justify-between">
+              <div class="flex items-center justify-between mb-1 px-1">
+                <div class="flex items-center gap-1.5">
+                  <span id="modalProctorDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-slate-200">Preview Kamera</span>
+                </div>
+                <button
+                  type="button"
+                  id="btnRetryCameraModal"
+                  onclick="initProctorCamera()"
+                  class="hidden text-[9px] bg-blue-600 hover:bg-blue-500 px-1.5 py-0.5 rounded font-semibold cursor-pointer"
+                >
+                  Aktifkan
+                </button>
+              </div>
+              <div class="relative rounded-lg overflow-hidden bg-slate-800 aspect-video border border-slate-600">
+                <video id="modalProctorVideo" autoplay playsinline muted class="w-full h-full object-cover scale-x-[-1]"></video>
+                <div id="modalCameraBlocked" class="hidden absolute inset-0 bg-slate-900/90 flex items-center justify-center p-1.5 text-center">
+                  <p class="text-[10px] text-rose-200 leading-tight font-medium">Izin kamera diperlukan.</p>
+                </div>
+              </div>
+              <div id="modalProctorBadge" class="mt-1 text-[10px] font-semibold text-emerald-300 text-center truncate">
+                Memantau Wajah...
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Petunjuk Pengerjaan Soal -->
+        <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-5 space-y-3">
+          <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+            Petunjuk Pengerjaan Soal:
+          </h4>
+          <ol class="list-decimal list-outside ml-5 space-y-2 text-slate-800 text-sm sm:text-base leading-relaxed">
+            <li>
+              Soal terdiri dari <strong>30 butir soal literasi kelas 6 SD</strong> yang terdiri dari teks berisi <strong>150-200 kata</strong> dengan waktu mengerjakan maksimal <strong>75 menit</strong> dengan metode soal diacak.
+            </li>
+            <li>
+              Periksa Kembali jawaban Anda. Pastikan Anda menjawab dengan benar.
+            </li>
+          </ol>
+          <p class="font-bold text-blue-900 text-base pt-1">
+            Selamat mengerjakan!
+          </p>
+        </div>
+
+        <!-- Tombol Pojok Bawah -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t border-slate-100">
+          <button
+            type="button"
+            onclick="closeInstructionModal()"
+            class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 font-semibold text-sm transition cursor-pointer"
+          >
+            Ubah Identitas
+          </button>
+          <button
+            type="button"
+            onclick="startExam()"
+            class="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-600/25 transition cursor-pointer flex items-center justify-center gap-2"
+          >
+            <span>Saya Mengerti, Saya Siap Mengerjakan</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HALAMAN 2: PENGERJAAN SOAL TKA ==================== -->
+  <section id="examPage" class="hidden min-h-screen flex flex-col bg-slate-100">
+    <!-- Top Header Bar -->
+    <header class="bg-white border-b border-slate-200 shadow-xs sticky top-0 z-30">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3">
+        <!-- Identitas & Judul Ujian -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-800 text-white font-bold flex items-center justify-center text-sm shadow-xs shrink-0">
+            TKA
+          </div>
+          <div>
+            <h2 class="font-arial-nova font-bold text-sm sm:text-base text-slate-900 leading-tight">
+              SIMULASI TKA - UPT SD NEGERI MLANGI 2 TAHUN 2027
+            </h2>
+            <p class="text-xs text-slate-600">
+              Peserta: <span id="headerStudentName" class="font-bold text-blue-800">-</span> | NISN: <span id="headerStudentNisn" class="font-semibold">-</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Preview Kamera Pengawas di Sebelah Timer Mundur 75 Menit -->
+        <div class="flex items-center gap-2.5 sm:gap-3 ml-auto">
+          <!-- Kotak Kamera Pengawas -->
+          <div id="examProctorBox" class="bg-slate-900 text-white px-2.5 py-1.5 rounded-xl border-2 border-slate-700 flex items-center gap-2.5 shadow-sm">
+            <div class="relative w-20 sm:w-24 aspect-video rounded-lg overflow-hidden bg-slate-800 border border-slate-600 shrink-0">
+              <video id="examProctorVideo" autoplay playsinline muted class="w-full h-full object-cover scale-x-[-1]"></video>
+              <div id="examCameraBlocked" class="hidden absolute inset-0 bg-slate-900/90 flex items-center justify-center p-1 text-center">
+                <span class="text-[8px] text-rose-300 font-bold leading-tight">Kamera Off</span>
+              </div>
+            </div>
+            <div class="pr-1">
+              <div class="flex items-center gap-1.5">
+                <span id="examProctorDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-[9px] uppercase tracking-wider font-bold text-slate-300">Pengawas</span>
+              </div>
+              <span id="examProctorBadge" class="block text-[10px] sm:text-xs font-bold text-emerald-300 leading-tight mt-0.5">
+                Wajah Aktif
+              </span>
+              <button
+                type="button"
+                id="btnRetryCameraExam"
+                onclick="initProctorCamera()"
+                class="hidden mt-0.5 text-[9px] bg-blue-600 hover:bg-blue-500 px-1.5 py-0.5 rounded font-semibold cursor-pointer"
+              >
+                Aktifkan
+              </button>
+            </div>
+          </div>
+
+          <!-- Timer Mundur 75 Menit -->
+          <div class="bg-slate-900 text-white px-4 py-2 rounded-xl flex items-center gap-2.5 shadow-sm border border-slate-700">
+            <svg class="w-5 h-5 text-amber-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <span class="block text-[9px] uppercase tracking-wider text-slate-400 leading-none">Sisa Waktu</span>
+              <span id="countdownDisplay" class="font-mono font-bold text-base sm:text-lg text-amber-300 tracking-wider">75:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Konten Utama Pengerjaan Soal -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+      
+      <!-- Kolom Kiri (8 kolom pada desktop): Area Stimulus, Soal, dan Opsi -->
+      <div class="lg:col-span-8 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+        <!-- Bar Nomor Soal -->
+        <div class="bg-slate-50 border-b border-slate-200 px-5 py-3.5 flex items-center justify-between">
+          <span class="px-3.5 py-1 rounded-lg bg-blue-800 text-white font-bold text-sm">
+            SOAL NO. <span id="currentQuestionNumber">1</span>
+          </span>
+        </div>
+
+        <!-- Isi Bacaan / Stimulus & Pertanyaan (Menggunakan Font Arial 11pt & Arial 8pt Italic untuk Sumber) -->
+        <div class="p-5 sm:p-7 space-y-5">
+          <!-- Kotak Stimulus Teks -->
+          <div class="bg-slate-50/90 border border-slate-200 rounded-xl p-4 sm:p-5 space-y-3">
+            <!-- Judul Teks -->
+            <h3 id="stimulusTitle" class="font-arial-11 font-bold text-slate-900 text-center"></h3>
+            <!-- Teks Bacaan -->
+            <div id="stimulusText" class="font-arial-11 text-slate-800 text-justify space-y-2.5"></div>
+            <!-- Sumber Bacaan (Arial 8pt Miring, Link Biru) -->
+            <div id="stimulusSource" class="font-arial-8-italic text-slate-600 pt-2 border-t border-slate-200/80"></div>
+          </div>
+
+          <!-- Petunjuk Soal (Arial 11pt) -->
+          <div id="questionInstruction" class="font-arial-11 font-bold text-blue-900 bg-blue-50/80 border-l-4 border-blue-700 px-3.5 py-2 rounded-r-lg">
+            Pilihlah satu jawaban yang paling tepat!
+          </div>
+
+          <!-- Pokok Soal / Pertanyaan (Arial 11pt) -->
+          <div id="questionStem" class="font-arial-11 font-bold text-slate-900"></div>
+
+          <!-- Wadah Opsi Jawaban (Dinamis sesuai PG / MCMA / Kategori) -->
+          <div id="optionsContainer" class="space-y-3 pt-1"></div>
+        </div>
+
+        <!-- Tombol Navigasi Bawah Soal: Selanjutnya, Lewati, Ragu-ragu, dan Selesai (di soal terakhir) -->
+        <div class="bg-slate-50 border-t border-slate-200 px-5 py-4 flex flex-wrap items-center justify-between gap-3 mt-auto">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <!-- Tombol Ragu-ragu -->
+            <button
+              type="button"
+              id="btnDoubt"
+              onclick="toggleDoubt()"
+              class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-white font-bold text-sm shadow-xs transition cursor-pointer flex items-center gap-2"
+            >
+              <span class="w-3.5 h-3.5 rounded-xs border-2 border-white inline-block" id="doubtCheckVisual"></span>
+              <span>Ragu-ragu</span>
+            </button>
+
+            <!-- Tombol Lewati -->
+            <button
+              type="button"
+              id="btnSkip"
+              onclick="skipQuestion()"
+              class="px-4 py-2.5 rounded-xl bg-slate-600 hover:bg-slate-700 active:scale-[0.98] text-white font-bold text-sm shadow-xs transition cursor-pointer flex items-center gap-1.5"
+            >
+              <span>Lewati</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-2.5 ml-auto">
+            <!-- Tombol Selanjutnya -->
+            <button
+              type="button"
+              id="btnNext"
+              onclick="nextQuestion()"
+              class="px-5 py-2.5 rounded-xl bg-blue-700 hover:bg-blue-800 active:scale-[0.98] text-white font-bold text-sm shadow-sm transition cursor-pointer flex items-center gap-1.5"
+            >
+              <span>Selanjutnya</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            <!-- Tombol Selesai (Muncul di kanan bawah pada soal terakhir / nomor 30) -->
+            <button
+              type="button"
+              id="btnFinish"
+              onclick="openFinishConfirmModal()"
+              class="hidden px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-bold text-sm shadow-md shadow-emerald-600/25 transition cursor-pointer flex items-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Selesai</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kolom Kanan (4 kolom pada desktop): Navigasi Nomor Soal 1-30 & Informasi Soal -->
+      <aside class="lg:col-span-4 space-y-4 lg:sticky lg:top-20">
+        <!-- Panel Navigasi Nomor Soal 1 s.d. 30 -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3.5">
+            <h3 class="font-bold text-slate-900 text-sm sm:text-base">Navigasi Nomor Soal</h3>
+            <span class="text-xs font-semibold text-slate-500">1 s.d. 30</span>
+          </div>
+
+          <!-- Grid Tombol Nomor 1 - 30 -->
+          <div id="questionNavGrid" class="grid grid-cols-5 sm:grid-cols-6 lg:grid-cols-5 gap-2"></div>
+
+          <!-- Keterangan Warna Status Soal -->
+          <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2 text-xs text-slate-700">
+            <div class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-md bg-blue-700 ring-2 ring-blue-300 inline-block shrink-0"></span>
+              <span>Sedang Dibuka</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-md bg-emerald-600 inline-block shrink-0"></span>
+              <span>Sudah Dikerjakan</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-md bg-amber-500 inline-block shrink-0"></span>
+              <span>Ragu-ragu</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-md bg-white border-2 border-slate-300 inline-block shrink-0"></span>
+              <span>Belum Dikerjakan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Informasi Terkait Soal (Di sebelah kanan laman pengerjaan) -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 space-y-3">
+          <h3 class="font-bold text-slate-900 text-sm sm:text-base border-b border-slate-100 pb-2.5 flex items-center gap-2">
+            <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Informasi Terkait Soal</span>
+          </h3>
+
+          <div class="space-y-2 text-xs sm:text-sm">
+            <div class="flex justify-between py-1 border-b border-slate-50">
+              <span class="text-slate-500">Mata Uji</span>
+              <span class="font-bold text-slate-800">Literasi Membaca (Kelas 6 SD)</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-50">
+              <span class="text-slate-500">Total Soal</span>
+              <span class="font-bold text-slate-800">30 Butir (Acak)</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-50">
+              <span class="text-slate-500">Sudah Dijawab</span>
+              <span id="infoAnsweredCount" class="font-bold text-emerald-700">0 / 30</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-50">
+              <span class="text-slate-500">Ditandai Ragu-ragu</span>
+              <span id="infoDoubtCount" class="font-bold text-amber-600">0</span>
+            </div>
+            <div class="flex justify-between py-1">
+              <span class="text-slate-500">Belum Dijawab</span>
+              <span id="infoUnansweredCount" class="font-bold text-slate-600">30</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </section>
+
+  <!-- ==================== MODAL KONFIRMASI SELESAI UJIAN ==================== -->
+  <div id="finishConfirmModal" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="bg-emerald-700 px-6 py-4 text-white">
+        <h3 class="text-lg font-bold">Konfirmasi Selesai Ujian</h3>
+      </div>
+      <div class="p-6 space-y-4">
+        <p id="finishConfirmDesc" class="text-sm sm:text-base text-slate-700 leading-relaxed">
+          Apakah Anda yakin ingin mengakhiri simulasi TKA sekarang dan melihat hasil nilai?
+        </p>
+        <div class="flex items-center justify-end gap-3 pt-2">
+          <button
+            type="button"
+            onclick="closeFinishConfirmModal()"
+            class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-semibold text-sm transition cursor-pointer"
+          >
+            Kembali ke Soal
+          </button>
+          <button
+            type="button"
+            onclick="finishExam()"
+            class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition cursor-pointer"
+          >
+            Ya, Selesaikan
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HALAMAN 3: HASIL PENGERJAAN TKA ==================== -->
+  <section id="resultPage" class="hidden min-h-screen flex flex-col items-center justify-center px-4 py-10 bg-gradient-to-b from-slate-100 via-blue-50/40 to-slate-100">
+    <div class="w-full max-w-xl bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden text-center">
+      <div class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 px-6 py-8 text-white">
+        <div class="w-16 h-16 mx-auto mb-3 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center">
+          <svg class="w-9 h-9 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Selamat!</h2>
+        <p id="resultStudentInfo" class="text-xs sm:text-sm text-blue-100 mt-1 font-medium">-</p>
+      </div>
+
+      <div class="p-6 sm:p-8 space-y-6">
+        <p class="text-base sm:text-lg text-slate-800 font-medium leading-relaxed">
+          Anda telah menyelesaikan Uji Coba Tes Kemampuan Akademik (TKA). Nilai yang anda dapatkan adalah
+        </p>
+
+        <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl py-6 px-4 shadow-inner">
+          <span class="block text-xs font-bold uppercase tracking-widest text-blue-700 mb-1">Nilai Akhir TKA</span>
+          <div id="finalScoreDisplay" class="text-5xl sm:text-6xl font-extrabold text-blue-900 tracking-tight">
+            0.00
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3">
+            <span class="block text-xs text-emerald-700 font-semibold">Jawaban Benar</span>
+            <span id="resultCorrectCount" class="text-lg font-bold text-emerald-800">0 Soal</span>
+          </div>
+          <div class="bg-rose-50 border border-rose-200 rounded-xl p-3">
+            <span class="block text-xs text-rose-700 font-semibold">Jawaban Salah / Kosong</span>
+            <span id="resultWrongCount" class="text-lg font-bold text-rose-800">0 Soal</span>
+          </div>
+        </div>
+
+        <!-- Status Pengiriman Nilai ke Google Apps Script -->
+        <div id="syncStatusBox" class="hidden rounded-xl bg-emerald-50 border border-emerald-200 p-3 text-emerald-800 text-xs sm:text-sm font-semibold">
+          Nilai berhasil tersimpan! Terima kasih.
+        </div>
+
+        <div class="pt-2 space-y-2.5">
+          <button
+            type="button"
+            onclick="kirimNilai()"
+            class="w-full py-3 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base shadow-md shadow-emerald-600/20 transition cursor-pointer"
+          >
+            Kirim Ulang Nilai
+          </button>
+          <button
+            type="button"
+            onclick="returnToMainMenu()"
+            class="w-full py-3.5 px-6 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-700/20 transition cursor-pointer"
+          >
+            Kembali ke Halaman Awal
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCRIPT BANK SOAL KISI-KISI TKA 2027 & LOGIKA UJIAN ==================== -->
+  <script>
+    // ==================== BANK 30 SOAL LITERASI SESUAI KISI-KISI TKA 2027 ====================
+    // Seluruh bacaan disusun sepanjang ~200 kata dengan kalimat tunggal pendek (3-7 kata)
+    // Kompetensi Kisi-Kisi TKA 2027 SD:
+    // 1. Pemahaman Tekstual (kosakata umum & khusus, informasi tersurat, penyusunan kembali informasi)
+    // 2. Pemahaman Inferensial (ide pokok, gagasan pendukung, kesimpulan, hubungan sebab-akibat/perbandingan)
+    // 3. Evaluasi dan Apresiasi (amanat/nilai-nilai teks, relevansi peristiwa/tokoh, ketepatan/kesesuaian informasi)
+
+    const KALIMANTAN_STIMULUS_200 = `Hutan di Kalimantan mulai terbakar. Api melanda banyak wilayah luas. Lahan rusak sangat parah sekali. Luasnya melebihi tiga ribu hektare. Bencana ini bernama kebakaran hutan. BNPB mencatat peristiwa besar itu. Petugas datang memadamkan api panas. Mereka bekerja dengan sangat giat. Tim darat memadamkan lewat tanah. Tim udara menyiram air banyak. Helikopter terbang membawa air bersih. Asap tebal menutupi langit biru. Udara kotor mengganggu pernapasan warga. Anak-anak harus memakai masker pelindung. Semua orang merasa sangat cemas. Api belum sepenuhnya bisa padam. Petugas terus memantau titik api. Pemerintah siaga menjaga keselamatan rakyat. Relawan desa ikut membantu petugas. Mereka menyiapkan posko kesehatan darurat. Dokter memeriksa warga yang sesak. Obat-obatan dibagikan secara gratis. Mobil tangki menyuplai air bersih. Sekolah diliburkan sementara demi keamanan. Warga berdoa agar hujan turun. Hujan deras dapat memadamkan bara. Kita harus menjaga alam sekitar. Jangan membakar hutan sembarangan lagi. Pohon hijau memberi udara segar. Hutan menjadi rumah satwa langka. Bumi kita butuh perlindungan nyata. Mari kita cintai alam kita.`;
+
+    const QUESTION_BANK = [
+      // SOAL 1 (Dari dokumen TKA - Pemahaman Tekstual: Kosakata Khusus)
+      {
+        id: 1,
+        type: 'pg',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Pemahaman Tekstual — Mengidentifikasi Kosakata Khusus Bidang Kebencanaan & Lingkungan',
+        judul: 'Kebakaran Hutan di Pulau Kalimantan',
+        stimulus: KALIMANTAN_STIMULUS_200,
+        sumber: 'Sumber: Adaptasi Laporan Kebencanaan Lingkungan BNPB, https://bnpb.go.id/berita/kebakaran-hutan-kalimantan',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Berdasarkan teks di atas, manakah kelompok kata yang merupakan kosakata khusus terkait bidang kebencanaan atau lingkungan?',
+        options: [
+          'Helikopter, hektare, BNPB, dan masker',
+          'Hutan, wilayah, darat, dan udara',
+          'Petugas, warga, anak-anak, dan rakyat',
+          'Langit, bumi, pohon, dan udara'
+        ],
+        answer: 0
+      },
+      // SOAL 2 (Dari dokumen TKA - Pemahaman Tekstual: Informasi Tersurat - MCMA)
+      {
+        id: 2,
+        type: 'mcma',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Pemahaman Tekstual — Menemukan Informasi Tersurat dalam Teks',
+        judul: 'Kebakaran Hutan di Pulau Kalimantan',
+        stimulus: KALIMANTAN_STIMULUS_200,
+        sumber: 'Sumber: Adaptasi Laporan Kebencanaan Lingkungan BNPB, https://bnpb.go.id/berita/kebakaran-hutan-kalimantan',
+        petunjuk: 'Pilihlah 2 (dua) jawaban yang benar dengan memberi tanda centang pada kotak!',
+        pertanyaan: 'Berdasarkan teks di atas, informasi tersurat apa saja yang dinyatakan secara jelas mengenai peristiwa kebakaran tersebut?',
+        options: [
+          'Proses pemadaman api dilakukan oleh petugas melalui jalur darat dan juga jalur udara.',
+          'Luas lahan dan hutan di Kalimantan yang mengalami kebakaran tercatat melebihi tiga ribu hektare.',
+          'Seluruh titik api di lokasi kebakaran sudah berhasil dipadamkan sepenuhnya oleh petugas gabungan.',
+          'Asap tebal menutupi langit sumatra. Udara kotor mengganggu pernapasan warga.'
+        ],
+        answer: [0, 1]
+      },
+      // SOAL 3 (Dari dokumen TKA - Evaluasi dan Apresiasi: Kesesuaian Amanat/Pesan Moral - Kategori)
+      {
+        id: 3,
+        type: 'kategori',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Evaluasi dan Apresiasi — Menilai Kesesuaian Amanat dan Pesan Moral Teks',
+        judul: 'Kebakaran Hutan di Pulau Kalimantan',
+        stimulus: KALIMANTAN_STIMULUS_200,
+        sumber: 'Sumber: Adaptasi Laporan Kebencanaan Lingkungan BNPB, https://bnpb.go.id/berita/kebakaran-hutan-kalimantan',
+        petunjuk: 'Tentukan apakah setiap pernyataan berikut Sesuai atau Tidak Sesuai dengan amanat teks! (Ketiga pernyataan harus benar semua untuk mendapatkan nilai)',
+        pertanyaan: 'Berdasarkan teks deskripsi di atas, tentukan apakah pernyataan-pernyataan berikut sesuai atau tidak sesuai dengan amanat atau pesan moral yang ingin disampaikan penulis kepada pembaca!',
+        colHeaders: ['Sesuai', 'Tidak Sesuai'],
+        statements: [
+          { text: '1. Kita diingatkan untuk selalu menjaga alam sekitar serta dilarang membakar hutan sembarangan.', correct: true },
+          { text: '2. Kita harus menumbuhkan sikap mencintai bumi dan merawat lingkungan agar tetap asri.', correct: true },
+          { text: '3. Kita dianjurkan untuk membiarkan lahan rusak parah tanpa harus peduli pada keselamatan bumi.', correct: false }
+        ]
+      },
+      // SOAL 4 (Dari dokumen TKA - Pemahaman Inferensial: Ide Pokok)
+      {
+        id: 4,
+        type: 'pg',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Pemahaman Inferensial — Menentukan Ide Pokok / Gagasan Utama Teks',
+        judul: 'Kebakaran Hutan di Pulau Kalimantan',
+        stimulus: KALIMANTAN_STIMULUS_200,
+        sumber: 'Sumber: Adaptasi Laporan Kebencanaan Lingkungan BNPB, https://bnpb.go.id/berita/kebakaran-hutan-kalimantan',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Ide pokok atau gagasan utama yang tepat dari teks deskripsi di atas adalah ...',
+        options: [
+          'Peristiwa bencana kebakaran hutan dan lahan di Kalimantan',
+          'Kerja keras petugas BNPB dalam memadamkan titik api',
+          'Dampak asap tebal yang mengganggu pernapasan warga',
+          'Ajakan pemerintah untuk selalu mencintai alam sekitar'
+        ],
+        answer: 0
+      },
+      // SOAL 5 (Dari dokumen TKA - Pemahaman Tekstual: Tokoh / Pihak yang Berperan)
+      {
+        id: 5,
+        type: 'pg',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Pemahaman Tekstual — Mengidentifikasi Tokoh atau Pihak yang Berperan dalam Peristiwa',
+        judul: 'Kebakaran Hutan di Pulau Kalimantan',
+        stimulus: KALIMANTAN_STIMULUS_200,
+        sumber: 'Sumber: Adaptasi Laporan Kebencanaan Lingkungan BNPB, https://bnpb.go.id/berita/kebakaran-hutan-kalimantan',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Berdasarkan teks di atas, pihak atau tokoh yang berperan aktif dalam melakukan upaya pemadaman bencana kebakaran tersebut adalah ...',
+        options: [
+          'Warga dan anak-anak',
+          'Pemerintah dan rakyat',
+          'Petugas darat dan udara',
+          'BNPB dan warga sipil'
+        ],
+        answer: 2
+      },
+      // SOAL 6 (Pemahaman Tekstual - Kosakata Khusus Bidang Kelautan/Ekologi)
+      {
+        id: 6,
+        type: 'pg',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Pemahaman Tekstual — Mengidentifikasi Kosakata Khusus Bidang Kelautan dan Ekologi',
+        judul: 'Keindahan Terumbu Karang Raja Ampat',
+        stimulus: `Raja Ampat memiliki laut sangat jernih. Wisatawan datang dari berbagai negara. Mereka ingin melihat terumbu karang indah. Terumbu karang menjadi rumah ikan kecil. Penyelam memakai tabung oksigen saat menyelam. Mereka menjaga jarak agar karang utuh. Ekosistem laut harus selalu kita jaga. Sampah plastik dilarang dibuang ke laut. Arus laut membawa nutrisi bagi plankton. Ikan warna-warni berenang dengan sangat lincah. Masyarakat lokal ikut menjaga wilayah konservasi. Nelayan menangkap ikan memakai alat ramah lingkungan. Tidak ada bom ikan di perairan ini. Pemerintah menetapkan aturan ketat bagi kapal wisata. Papan peringatan dipasang di dermaga utama. Pemandu wisata mengingatkan tamu sebelum berenang. Peneliti kelautan memantau pertumbuhan karang muda. Mereka mencatat jenis biota laut langka. Air laut bersih menjaga kesehatan terumbu karang. Wisata bahari dikelola secara berkelanjutan. Keindahan bawah laut memberi manfaat ekonomi. Warga memperoleh penghasilan dari jasa wisata. Alam terjaga membuat kehidupan semakin sejahtera. Mari lestarikan kekayaan laut Indonesia tercinta.`,
+        sumber: 'Sumber: Majalah Bahari Nusantara, https://baharinusantara.id/konservasi-raja-ampat',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Kelompok kosakata khusus dalam bidang kelautan dan ekologi yang terdapat pada teks di atas adalah ...',
+        options: [
+          'Terumbu karang, ekosistem, plankton, dan konservasi',
+          'Wisatawan, negara, masyarakat, dan nelayan',
+          'Dermaga, kapal, pemandu, dan tamu',
+          'Sampah, aturan, peringatan, dan penghasilan'
+        ],
+        answer: 0
+      },
+      // SOAL 7 (Pemahaman Inferensial - Gagasan Pendukung)
+      {
+        id: 7,
+        type: 'pg',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Pemahaman Inferensial — Menentukan Gagasan Pendukung dalam Teks',
+        judul: 'Suasana Pagi di Pasar Tradisional Desa Mlangi',
+        stimulus: `Pasar tradisional di desa mulai ramai pagi hari. Pedagang menata sayuran segar di lapak kayu. Ibu-ibu datang membawa keranjang belanja rotan. Aroma gorengan hangat tercium dari sudut pasar. Penjual buah menyusun jeruk dan pisang rapi. Suara tawar-menawar terdengar akrab dan ramah. Petugas kebersihan menyapu lorong pasar dengan rajin. Tempat sampah tersedia di setiap sudut jalan. Pembeli memilih bahan makanan dengan sangat teliti. Harga kebutuhan pokok cukup terjangkau bagi warga. Pedagang selalu tersenyum melayani setiap pelanggan. Anak-anak membantu orang tua membawakan barang belanjaan. Penjual ikan membersihkan dagangan dengan air mengalir. Pedagang rempah menimbang bumbu dapur secara tepat. Pengunjung berjalan santai melewati los pasar bersih. Petugas keamanan mengatur parkir sepeda motor tertib. Matahari pagi bersinar cerah menyinari atap pasar. Kegiatan jual beli berjalan tertib dan aman. Pasar menjadi pusat perputaran ekonomi warga desa. Hubungan sosial antarwarga terjalin sangat erat di sini. Kebersihan pasar membuat pengunjung merasa selalu nyaman. Budaya belanja di pasar tradisional patut dilestarikan.`,
+        sumber: 'Sumber: Buletin Ekonomi Desa Tuban, https://tubankab.go.id/berita/pasar-desa-mlangi',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Gagasan pendukung yang menjelaskan alasan pengunjung merasa nyaman berbelanja di pasar tersebut adalah ...',
+        options: [
+          'Petugas kebersihan rajin menyapu lorong pasar dan tempat sampah tersedia di setiap sudut.',
+          'Matahari pagi bersinar cerah menyinari atap pasar sejak pukul enam pagi.',
+          'Ibu-ibu datang dari rumah masing-masing dengan membawa keranjang belanja rotan.',
+          'Anak-anak ikut membantu orang tua membawakan barang belanjaan menuju rumah.'
+        ],
+        answer: 0
+      },
+      // SOAL 8 (Pemahaman Tekstual - Informasi Tersurat - MCMA)
+      {
+        id: 8,
+        type: 'mcma',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Pemahaman Tekstual — Menemukan Informasi Tersurat dalam Teks',
+        judul: 'Hutan Mangrove di Pesisir Utara Tuban',
+        stimulus: `Hutan mangrove tumbuh subur di pesisir utara Tuban. Akar pohon bakau mencengkeram tanah lumpur kuat. Tanaman ini menahan gelombang air laut pasang. Abrasi pantai dapat dicegah oleh hutan bakau. Burung bangau putih sering hinggap di dahan pohon. Kepiting kecil merayap di sela akar bakau. Ikan-ikan kecil berlindung di bawah akar rimbun. Siswa sekolah dasar melakukan kunjungan belajar ke sana. Mereka menanam bibit mangrove bersama petugas lingkungan. Guru menjelaskan manfaat pohon bakau bagi pesisir. Udara di sekitar pantai terasa sangat sejuk. Jalur jembatan kayu memudahkan pengunjung berjalan santai. Papan informasi dipasang di sepanjang jalur wisata. Pengunjung dilarang memetik daun atau ranting pohon. Sampah harus dibuang pada tempat yang disediakan. Nelayan sekitar ikut menjaga kelestarian ekosistem bakau. Pohon mangrove juga menyerap gas karbon dioksida. Masyarakat sekitar menjaga kelestarian hutan mangrove bersama. Kegiatan wisata edukasi meningkatkan kepedulian generasi muda. Pantai yang lestari melindungi permukiman warga pesisir.`,
+        sumber: 'Sumber: Dinas Lingkungan Hidup Kabupaten Tuban, https://dlh.tubankab.go.id/edukasi-mangrove',
+        petunjuk: 'Pilihlah 2 (dua) jawaban yang benar dengan memberi tanda centang pada kotak!',
+        pertanyaan: 'Berdasarkan teks di atas, manakah dua pernyataan yang sesuai dengan isi bacaan secara tersurat?',
+        options: [
+          'Akar pohon bakau bermanfaat untuk menahan gelombang air laut pasang dan mencegah abrasi pantai.',
+          'Siswa sekolah dasar melakukan kunjungan belajar dan menanam bibit mangrove bersama petugas lingkungan.',
+          'Pengunjung diperbolehkan memetik ranting pohon bakau untuk dibawa pulang sebagai kenang-kenangan.',
+          'Jembatan beton bertingkat dibangun di atas hutan mangrove untuk dilalui kendaraan bermotor.'
+        ],
+        answer: [0, 1]
+      },
+      // SOAL 9 (Evaluasi dan Apresiasi - Nilai-Nilai dalam Teks - Kategori)
+      {
+        id: 9,
+        type: 'kategori',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Evaluasi dan Apresiasi — Mengidentifikasi Nilai-Nilai Kebersamaan dan Kepedulian dalam Teks',
+        judul: 'Perpustakaan Keliling di Halaman Sekolah',
+        stimulus: `Mobil perpustakaan keliling tiba di halaman sekolah pagi ini. Siswa kelas enam berbaris rapi menyambut kedatangannya. Petugas perpustakaan membuka pintu mobil dengan ramah. Rak buku berwarna cerah langsung terlihat jelas. Tersedia berbagai buku cerita rakyat dan sains. Buku ensiklopedia bergambar tertata rapi di rak. Siswa memilih buku bacaan sesuai minat masing-masing. Mereka duduk membaca di bawah pohon rindang. Suasana halaman sekolah menjadi sangat tenang dan nyaman. Beberapa siswa berdiskusi ringan tentang isi buku. Mereka saling bertukar informasi pengetahuan baru. Guru mendampingi siswa mencatat ringkasan cerita pendek. Waktu membaca berlangsung selama empat puluh lima menit. Petugas mencatat judul buku yang paling digemari. Siswa kelas rendah juga ikut membaca bersama kakak kelas. Setelah selesai, siswa mengembalikan buku ke rak semula. Mereka mengucapkan terima kasih kepada petugas perpustakaan. Kebiasaan membaca buku memperluas wawasan anak-anak. Minat baca yang tinggi membentuk generasi cerdas. Sekolah rutin mengundang mobil perpustakaan setiap bulan.`,
+        sumber: 'Sumber: Literasi Sekolah Dasar Kemendikdasmen, https://buku.kemdikbud.go.id/perpustakaan-keliling',
+        petunjuk: 'Tentukan apakah setiap pernyataan berikut Benar atau Salah berdasarkan teks!',
+        pertanyaan: 'Tentukan nilai-nilai karakter positif yang tercermin dalam kegiatan pada teks di atas!',
+        colHeaders: ['Benar', 'Salah'],
+        statements: [
+          { text: '1. Sikap disiplin dan tertib ditunjukkan siswa saat berbaris rapi dan mengembalikan buku ke rak semula.', correct: true },
+          { text: '2. Rasa ingin tahu dan gemar membaca ditunjukkan siswa saat berdiskusi dan mencatat ringkasan cerita.', correct: true },
+          { text: '3. Sikap acuh tak acuh ditunjukkan siswa dengan membiarkan buku berserakan di bawah pohon rindang.', correct: false }
+        ]
+      },
+      // SOAL 10 (Pemahaman Inferensial - Kesimpulan Teks)
+      {
+        id: 10,
+        type: 'pg',
+        genre: 'Teks Deskripsi',
+        kompetensi: 'Pemahaman Inferensial — Menyimpulkan Isi Teks Deskripsi',
+        judul: 'Taman Toga di Pekarangan Rumah Warga',
+        stimulus: `Warga RT tiga menanam tanaman obat keluarga di pekarangan. Tanaman itu dikenal dengan sebutan toga. Jahe, kunyit, dan kencur tumbuh sangat subur. Daun sirih merambat rapi di pagar bambu. Serai dan kumis kucing ditanam berjejer rapi. Warga memanfaatkan lahan sempit dengan pot bekas. Setiap sore mereka menyiram tanaman secara bergantian. Pupuk kompos dibuat sendiri dari sampah daun. Tanaman obat berguna untuk menjaga kesehatan keluarga. Jahe hangat membantu meredakan batuk dan masuk angin. Kunyit sering diolah menjadi minuman jamu segar. Daun sirih bermanfaat sebagai antiseptik alami keluarga. Anak-anak diajari mengenal jenis dan manfaat tanaman. Papan nama kecil dipasang di setiap pot tanaman. Kader kesehatan desa rutin memantau pertumbuhan tanaman. Lingkungan perumahan tampak hijau, rapi, dan asri. Warga tidak perlu membeli obat herbal mahal. Kerja sama warga membuat program toga berhasil. Kebiasaan menanam tanaman bermanfaat patut ditiru semua warga.`,
+        sumber: 'Sumber: Kader Kesehatan Desa Mlangi, https://kesehatan-tuban.id/taman-toga-warga',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Simpulan yang paling tepat berdasarkan keseluruhan isi teks di atas adalah ...',
+        options: [
+          'Penanaman tanaman obat keluarga oleh warga RT tiga bermanfaat bagi kesehatan dan keasrian lingkungan.',
+          'Warga RT tiga menjual seluruh hasil panen jahe dan kunyit ke pasar tradisional setiap sore.',
+          'Pupuk kompos hanya dapat dibuat menggunakan bahan kimia yang dibeli dari toko pertanian.',
+          'Anak-anak di RT tiga dilarang menyentuh pot tanaman obat yang berada di pagar bambu.'
+        ],
+        answer: 0
+      },
+      // SOAL 11 (Teks Argumentasi - Pemahaman Inferensial: Ide Pokok)
+      {
+        id: 11,
+        type: 'pg',
+        genre: 'Teks Argumentasi',
+        kompetensi: 'Pemahaman Inferensial — Menentukan Ide Pokok Teks Argumentasi',
+        judul: 'Pentingnya Membawa Botol Minum Sendiri ke Sekolah',
+        stimulus: `Siswa sekolah dasar sebaiknya membawa botol minum sendiri. Kebiasaan ini membawa banyak manfaat bagi kesehatan. Air putih dari rumah terjamin kebersihannya. Tubuh siswa tetap segar selama mengikuti pelajaran. Minum air cukup mencegah dehidrasi saat belajar. Selain itu, membawa botol minum mengurangi sampah plastik. Kemasan minuman sekali pakai sering menumpuk di tempat sampah. Sampah plastik membutuhkan waktu ratusan tahun untuk terurai. Jika dibakar, asap plastik mencemari udara sekitar. Sampah plastik juga menyumbat saluran air sekolah. Membawa botol minum ulang juga menghemat uang jajan. Uang saku dapat ditabung untuk keperluan sekolah lainnya. Sekolah sudah menyediakan tempat isi ulang air minum. Siswa dapat mengisi botol saat air sudah habis. Guru selalu mengingatkan siswa menjaga kebersihan botol. Banyak sekolah menerapkan aturan pengurangan sampah plastik. Langkah kecil ini membantu menjaga kelestarian bumi. Mari biasakan membawa botol minum setiap hari ke sekolah.`,
+        sumber: 'Sumber: Gerakan Sekolah Sehat dan Peduli Lingkungan, https://uks.kemdikbud.go.id/kurangi-plastik',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Ide pokok yang disampaikan penulis dalam teks argumentasi di atas adalah ...',
+        options: [
+          'Manfaat kebiasaan membawa botol minum sendiri bagi kesehatan siswa dan kelestarian lingkungan.',
+          'Cara mengolah sampah botol plastik bekas menjadi kerajinan tangan di ruang kelas.',
+          'Daftar harga minuman kemasan yang dijual di kantin sekolah dasar setiap hari.',
+          'Proses pembangunan tempat isi ulang air minum di halaman sekolah dasar.'
+        ],
+        answer: 0
+      },
+      // SOAL 12 (Teks Argumentasi - Pemahaman Tekstual: Kosakata Umum & Khusus)
+      {
+        id: 12,
+        type: 'pg',
+        genre: 'Teks Argumentasi',
+        kompetensi: 'Pemahaman Tekstual — Memahami Makna Kosakata Bidang Kesehatan dan Gizi',
+        judul: 'Sarapan Bergizi Sebelum Berangkat Sekolah',
+        stimulus: `Sarapan pagi sangat penting bagi anak usia sekolah. Tubuh memerlukan energi setelah tidur semalam suntuk. Sarapan membantu otak berkonsentrasi saat menerima pelajaran. Siswa yang sarapan lebih mudah memahami penjelasan guru. Sebaliknya, melewatkan sarapan membuat tubuh cepat lemas. Perut kosong memicu rasa kantuk dan sulit fokus. Daya ingat anak juga menurun saat belajar. Menu sarapan tidak harus mahal atau mewah. Nasi, telur, sayur, dan buah sudah mencukupi gizi. Segelas susu hangat menambah kebutuhan kalsium harian. Makanan tersebut mengandung karbohidrat, protein, dan vitamin seimbang. Orang tua sebaiknya menyiapkan sarapan sebelum anak berangkat. Anak juga perlu bangun lebih pagi agar sempat makan. Makan terburu-buru dapat mengganggu pencernaan tubuh kita. Kebiasaan sarapan sehat mendukung prestasi belajar siswa. Kesehatan tubuh terjaga sehingga anak jarang sakit. Biasakan sarapan bergizi setiap pagi demi masa depan cerah.`,
+        sumber: 'Sumber: Panduan Gizi Seimbang Anak Sekolah Kemenkes, https://ayosehat.kemkes.go.id/sarapan-bergizi',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Kata "berkonsentrasi" pada kalimat ketiga teks di atas memiliki arti ...',
+        options: [
+          'Memusatkan perhatian dan pikiran pada suatu hal',
+          'Mengistirahatkan tubuh setelah berolahraga berat',
+          'Mengingat kembali kejadian masa lalu dengan cepat',
+          'Membagikan tugas kelompok kepada teman sebangku'
+        ],
+        answer: 0
+      },
+      // SOAL 13 (Teks Argumentasi - Pemahaman Inferensial: Hubungan Sebab-Akibat - MCMA)
+      {
+        id: 13,
+        type: 'mcma',
+        genre: 'Teks Argumentasi',
+        kompetensi: 'Pemahaman Inferensial — Mengidentifikasi Hubungan Sebab-Akibat dalam Teks',
+        judul: 'Batasi Waktu Bermain Gawai pada Anak',
+        stimulus: `Penggunaan gawai pada anak perlu dibatasi setiap hari. Bermain gawai terlalu lama berdampak buruk bagi mata. Cahaya layar gawai membuat mata cepat lelah dan perih. Penglihatan anak dapat terganggu jika terus menatap layar. Selain itu, anak menjadi kurang bergerak dan berolahraga. Tubuh yang jarang bergerak mudah mengalami kegemukan. Otot tubuh menjadi kaku karena terlalu lama duduk. Waktu belajar dan istirahat anak juga sering terganggu. Anak yang kecanduan gawai cenderung sulit tidur malam. Akibatnya, anak bangun kesiangan dan mengantuk di kelas. Interaksi langsung dengan teman sebaya ikut berkurang. Padahal, bermain bersama teman melatih kemampuan kerja sama. Orang tua perlu membuat jadwal penggunaan gawai di rumah. Gawai sebaiknya digunakan hanya untuk keperluan belajar sekolah. Waktu luang dapat diisi dengan membaca atau berolahraga. Disiplin menggunakan gawai menjaga kesehatan fisik dan mental anak.`,
+        sumber: 'Sumber: Sahabat Keluarga Kemendikdasmen, https://sahabatkeluarga.kemdikbud.go.id/bijak-gawai',
+        petunjuk: 'Pilihlah 2 (dua) jawaban yang benar dengan memberi tanda centang pada kotak!',
+        pertanyaan: 'Berdasarkan teks di atas, manakah dua akibat yang ditimbulkan jika anak bermain gawai terlalu lama?',
+        options: [
+          'Mata menjadi cepat lelah dan perih akibat paparan cahaya layar gawai.',
+          'Anak menjadi kurang bergerak sehingga tubuh mudah mengalami kegemukan.',
+          'Kemampuan kerja sama anak dengan teman sebaya meningkat pesat.',
+          'Anak selalu bangun lebih pagi dan sangat bersemangat mengikuti pelajaran.'
+        ],
+        answer: [0, 1]
+      },
+      // SOAL 14 (Teks Argumentasi - Evaluasi dan Apresiasi: Menilai Ketepatan Pernyataan - Kategori)
+      {
+        id: 14,
+        type: 'kategori',
+        genre: 'Teks Argumentasi',
+        kompetensi: 'Evaluasi dan Apresiasi — Menilai Ketepatan Argumen dalam Teks',
+        judul: 'Manfaat Jalan Kaki dan Bersepeda ke Sekolah',
+        stimulus: `Berjalan kaki atau bersepeda ke sekolah sangat dianjurkan. Kegiatan ini cocok bagi siswa yang rumahnya dekat sekolah. Bersepeda pagi hari melatih kekuatan otot kaki siswa. Jantung dan paru-paru bekerja lebih sehat dan kuat. Udara pagi yang segar baik bagi pernapasan anak. Sinar matahari pagi memberi vitamin D bagi tulang. Selain menyehatkan, bersepeda mengurangi kemacetan di depan gerbang. Jumlah kendaraan bermotor di jalan raya menjadi berkurang. Polusi udara dari asap kendaraan ikut menurun drastis. Lingkungan sekitar sekolah menjadi lebih tenang dan bersih. Siswa juga belajar mandiri dan disiplin mengatur waktu. Mereka berangkat lebih awal agar tidak terlambat tiba. Keselamatan di jalan tetap harus menjadi perhatian utama. Siswa wajib menggunakan helm dan mematuhi rambu lalu lintas. Jalur sepeda dan trotoar harus digunakan dengan tertib. Mari budayakan jalan kaki dan bersepeda demi kesehatan bersama.`,
+        sumber: 'Sumber: Kampanye Transportasi Sehat Kota Ramah Anak, https://dephub.go.id/edukasi-sepeda-sekolah',
+        petunjuk: 'Tentukan apakah setiap pernyataan berikut Sesuai atau Tidak Sesuai dengan isi teks argumentasi!',
+        pertanyaan: 'Berdasarkan argumen penulis pada teks di atas, tentukan kesesuaian pernyataan-pernyataan berikut!',
+        colHeaders: ['Sesuai', 'Tidak Sesuai'],
+        statements: [
+          { text: '1. Bersepeda ke sekolah membantu mengurangi kemacetan dan polusi udara dari asap kendaraan.', correct: true },
+          { text: '2. Siswa yang bersepeda wajib memakai helm dan mematuhi rambu lalu lintas demi keselamatan.', correct: true },
+          { text: '3. Berjalan kaki ke sekolah membuat siswa sering terlambat karena udara pagi sangat panas.', correct: false }
+        ]
+      },
+      // SOAL 15 (Teks Argumentasi - Pemahaman Inferensial: Gagasan Pendukung)
+      {
+        id: 15,
+        type: 'pg',
+        genre: 'Teks Argumentasi',
+        kompetensi: 'Pemahaman Inferensial — Menentukan Gagasan Pendukung Teks Argumentasi',
+        judul: 'Gemar Menabung Sejak Usia Dini',
+        stimulus: `Menabung sejak usia sekolah dasar adalah kebiasaan terpuji. Siswa dapat menyisihkan sebagian uang jajan setiap hari. Uang tabungan tidak harus dalam jumlah yang besar. Jumlah kecil yang rutin akan terkumpul menjadi banyak. Menabung melatih anak hidup hemat dan tidak boros. Anak belajar membedakan antara kebutuhan dan keinginan utama. Anak tidak mudah tergoda membeli jajanan kurang sehat. Saat ada keperluan mendadak, tabungan dapat segera digunakan. Siswa tidak perlu selalu meminta uang kepada orang tua. Menabung juga mengajarkan sikap sabar dalam meraih tujuan. Misalnya, membeli tas sekolah baru dari hasil tabungan. Siswa dapat menabung di celengan rumah atau koperasi sekolah. Koperasi sekolah mencatat tabungan siswa secara aman dan rapi. Guru juga membimbing siswa mencatat pemasukan uang saku. Kebiasaan baik ini bermanfaat hingga anak tumbuh dewasa. Mari mulai menabung hari ini demi masa depan mandiri.`,
+        sumber: 'Sumber: Edukasi Keuangan Pelajar OJK, https://sikapiuangmu.ojk.go.id/menabung-sejak-dini',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Alasan yang mendukung pendapat bahwa menabung melatih anak hidup hemat adalah ...',
+        options: [
+          'Anak belajar membedakan antara kebutuhan pokok dan keinginan jajan yang tidak penting.',
+          'Anak harus menyetorkan seluruh uang jajannya ke bank setiap awal bulan.',
+          'Orang tua melarang anak membeli peralatan sekolah menggunakan uang tabungan sendiri.',
+          'Koperasi sekolah memberikan hadiah sepeda bagi setiap siswa yang menabung.'
+        ],
+        answer: 0
+      },
+      // SOAL 16 (Teks Argumentasi - Evaluasi dan Apresiasi: Amanat Penulis)
+      {
+        id: 16,
+        type: 'pg',
+        genre: 'Teks Argumentasi',
+        kompetensi: 'Evaluasi dan Apresiasi — Menyimpulkan Amanat Penulis dalam Teks Argumentasi',
+        judul: 'Pentingnya Memilah Sampah dari Rumah',
+        stimulus: `Pemilahan sampah sebaiknya dimulai dari lingkungan rumah tangga. Sampah dibagi menjadi sampah organik dan sampah anorganik. Sampah organik berasal dari sisa makanan dan dedaunan. Sampah ini dapat diolah menjadi pupuk kompos subur. Sampah anorganik meliputi plastik, kaleng, dan botol kaca. Barang tersebut dapat didaur ulang menjadi produk berguna. Kertas bekas juga dapat dikumpulkan untuk didaur ulang. Jika sampah dicampur, proses pengolahan menjadi sangat sulit. Tumpukan sampah bercampur menimbulkan bau tidak sedap. Lalat dan kuman penyakit mudah berkembang biak di sana. Keluarga perlu menyiapkan dua tempat sampah berbeda warna. Anak-anak harus dibiasakan membuang sampah sesuai jenisnya. Kebiasaan ini meringankan tugas petugas kebersihan lingkungan. Bank sampah desa juga menerima setoran sampah terpilah. Lingkungan rumah menjadi bersih, sehat, dan bebas banjir. Kesadaran memilah sampah adalah wujud tanggung jawab bersama.`,
+        sumber: 'Sumber: Panduan Pengelolaan Sampah Rumah Tangga KLHK, https://menlhk.go.id/pilah-sampah-rumah',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Pesan utama yang ingin disampaikan penulis kepada pembaca melalui teks di atas adalah ...',
+        options: [
+          'Setiap keluarga hendaknya membiasakan memilah sampah organik dan anorganik sejak dari rumah.',
+          'Petugas kebersihan wajib menyediakan tempat sampah berwarna di seluruh ruang tamu warga.',
+          'Sampah plastik dan kaleng sebaiknya ditimbun di halaman rumah agar tanah menjadi subur.',
+          'Pengolahan pupuk kompos hanya boleh dilakukan oleh pabrik besar di kawasan industri.'
+        ],
+        answer: 0
+      },
+      // SOAL 17 (Puisi - Pemahaman Inferensial: Makna Kias / Simbolik)
+      {
+        id: 17,
+        type: 'pg',
+        genre: 'Puisi',
+        kompetensi: 'Pemahaman Inferensial — Menafsirkan Makna Kata Kias dalam Puisi',
+        judul: 'Pelita di Ruang Kelas',
+        stimulus: `Pagi cerah menyambut langkah kakiku\nMenuju sekolah tempat menimba ilmu\nDi depan kelas engkau berdiri ramah\nMenyapa kami dengan senyum cerah\n\nEngkau adalah pelita dalam gelap\nMenerangi jalan kami penuh harap\nHuruf demi huruf engkau ajarkan\nAngka demi angka engkau jelaskan\n\nKesabaranmu seluas samudra biru\nMembimbing kami tanpa rasa jemu\nSaat kami salah engkau membetulkan\nSaat kami ragu engkau menguatkan\n\nEngkau tanamkan budi pekerti mulia\nAgar kami hormat pada sesama\nSetiap nasihatmu terukir di hati\nMenjadi pedoman langkah kami nanti\n\nTerima kasih wahai guruku tercinta\nJasamu abadi sepanjang masa\nIlmu darimu menjadi bekal berharga\nUntuk meraih cita-cita mulia`,
+        sumber: 'Sumber: Antologi Puisi Anak Negeri, Karya Siswa SD Mlangi 2, 2026',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Makna kata "pelita" pada bait kedua puisi di atas adalah ...',
+        options: [
+          'Guru yang memberikan penerangan ilmu dan bimbingan kepada siswa',
+          'Lampu minyak yang diletakkan di atas meja ruang kelas',
+          'Sinar matahari pagi yang masuk melalui jendela sekolah',
+          'Buku pelajaran tebal yang disimpan di dalam lemari kelas'
+        ],
+        answer: 0
+      },
+      // SOAL 18 (Puisi - Evaluasi dan Apresiasi: Amanat Puisi)
+      {
+        id: 18,
+        type: 'pg',
+        genre: 'Puisi',
+        kompetensi: 'Evaluasi dan Apresiasi — Menemukan Amanat dan Nilai Moral dalam Puisi',
+        judul: 'Nyanyian Pohon di Lereng Bukit',
+        stimulus: `Aku berdiri tegak di lereng bukit\nAkar kuatkan tanah agar tak sakit\nDaunku rimbun meneduhkan bumi\nMemberi udara segar setiap hari\n\nBurung-burung kecil bernyanyi riang\nMembuat sarang di dahan yang tenang\nAir hujan kusimpan di dalam tanah\nAgar mata air mengalir melimpah\n\nSungai kecil mengalir jernih ke desa\nMenyirami sawah petani tercinta\nSemua makhluk hidup merasakan manfaat\nDari hutan hijau yang selalu sehat\n\nJangan tebang aku dengan sembarangan\nJangan bakar hutan demi keuntungan\nBila aku hilang bukit akan gersang\nBanjir dan longsor pasti akan datang\n\nRawatlah aku dengan penuh cinta\nTanam tunas baru di sekitar kita\nMari jaga alam tetap lestari\nUntuk kehidupan di masa nanti`,
+        sumber: 'Sumber: Kumpulan Puisi Lingkungan Hidup Anak Indonesia, https://literasi-anak.id/puisi-pohon',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Amanat yang terkandung dalam puisi "Nyanyian Pohon di Lereng Bukit" adalah ...',
+        options: [
+          'Kita harus merawat pohon dan tidak menebang hutan sembarangan agar terhindar dari bencana.',
+          'Burung-burung kecil sebaiknya dipindahkan dari lereng bukit menuju kandang di dalam rumah.',
+          'Air hujan di lereng bukit harus dialirkan langsung ke jalan raya agar tanah tidak basah.',
+          'Penebangan pohon di hutan boleh dilakukan setiap hari untuk memperluas lahan parkir.'
+        ],
+        answer: 0
+      },
+      // SOAL 19 (Puisi - Pemahaman Tekstual: Informasi Tersurat dalam Puisi - MCMA)
+      {
+        id: 19,
+        type: 'mcma',
+        genre: 'Puisi',
+        kompetensi: 'Pemahaman Tekstual — Menemukan Informasi Tersurat dalam Puisi',
+        judul: 'Senja di Dermaga Nelayan',
+        stimulus: `Matahari perlahan turun di barat\nLangit berubah menjadi jingga hangat\nAngin laut berembus lembut menyapa\nPerahu nelayan pulang membawa cerita\n\nLayar putih digulung dengan rapi\nJaring ikan diangkat ke tepi\nWajah ayah tampak lelah namun bahagia\nHasil tangkapan cukup untuk keluarga\n\nOmbak kecil menari di bibir pantai\nAnak-anak berlari menyambut damai\nKeranjang ikan dipikul penuh semangat\nSyukur terucap atas rezeki yang didapat\n\nIbu menyiapkan teh hangat di rumah\nMenyambut kepulangan ayah dengan ramah\nKeluarga berkumpul penuh rasa cinta\nMensyukuri nikmat Tuhan Yang Kuasa\n\nMalam tiba bintang mulai bersinar\nDermaga tenang setelah hari berputar\nEsok pagi layar kembali terkembang\nMenjemput harapan di lautan luas terbentang`,
+        sumber: 'Sumber: Majalah Sastra Anak Pesisir, https://sastraanak.id/senja-di-dermaga',
+        petunjuk: 'Pilihlah 2 (dua) jawaban yang benar dengan memberi tanda centang pada kotak!',
+        pertanyaan: 'Berdasarkan isi puisi di atas, dua peristiwa yang terjadi pada waktu senja di dermaga adalah ...',
+        options: [
+          'Perahu nelayan pulang ke tepi pantai dengan membawa hasil tangkapan ikan.',
+          'Anak-anak berlari gembira menyambut kedatangan nelayan di bibir pantai.',
+          'Badai besar datang menghantam perahu hingga layar putih robek di tengah laut.',
+          'Nelayan baru berangkat melaut saat bintang-bintang mulai bersinar terang.'
+        ],
+        answer: [0, 1]
+      },
+      // SOAL 20 (Puisi - Evaluasi dan Apresiasi: Nilai-Nilai dalam Puisi - Kategori)
+      {
+        id: 20,
+        type: 'kategori',
+        genre: 'Puisi',
+        kompetensi: 'Evaluasi dan Apresiasi — Mengidentifikasi Nilai-Nilai Kehidupan dalam Puisi',
+        judul: 'Sahabat Sejati',
+        stimulus: `Di halaman sekolah kita bertemu\nBerbagi cerita dan tawa selalu\nSaat aku sedih engkau menghibur\nSaat aku jatuh engkau mengulur\n\nKita belajar bersama di bawah pohon\nSaling membantu saat soal sulit dimohon\nTidak ada iri di dalam hati\nKita tumbuh menjadi pribadi terpuji\n\nBila berbeda pendapat kita berdiskusi\nMencari jalan keluar dengan rendah hati\nMaaf terucap bila ada salah kata\nPersahabatan tetap terjaga selamanya\n\nKita bermain bersama tanpa membeda\nMenghargai suku dan bahasa semua\nSaling menjaga rahasia dan kepercayaan\nMenciptakan kerukunan di lingkungan teman\n\nTerima kasih sahabat terbaikku\nKebersamaan kita indah selalu\nMari terus berbuat kebaikan\nMenjadi kebanggaan guru dan teman`,
+        sumber: 'Sumber: Buku Kumpulan Puisi Persahabatan SD, https://buku.kemdikbud.go.id/puisi-sahabat',
+        petunjuk: 'Tentukan apakah pernyataan berikut Benar atau Salah sesuai nilai dalam puisi!',
+        pertanyaan: 'Tentukan ketepatan nilai-nilai persahabatan yang terdapat dalam puisi "Sahabat Sejati"!',
+        colHeaders: ['Benar', 'Salah'],
+        statements: [
+          { text: '1. Puisi mengajarkan nilai tolong-menolong saat teman mengalami kesulitan belajar.', correct: true },
+          { text: '2. Puisi mengajarkan sikap rendah hati untuk berdiskusi dan meminta maaf saat berbeda pendapat.', correct: true },
+          { text: '3. Puisi menganjurkan sikap iri hati apabila teman mendapatkan nilai yang lebih tinggi.', correct: false }
+        ]
+      },
+      // SOAL 21 (Puisi - Pemahaman Inferensial: Tema Puisi)
+      {
+        id: 21,
+        type: 'pg',
+        genre: 'Puisi',
+        kompetensi: 'Pemahaman Inferensial — Menentukan Tema Utama Puisi',
+        judul: 'Semangat Pagi Anak Indonesia',
+        stimulus: `Ayam berkokok menyambut fajar\nAku bangun dengan hati segar\nMerapikan tempat tidur sendiri\nLalu mandi dan menggosok gigi\n\nSeragam merah putih kupakai rapi\nSepatu hitam terikat di kaki\nPamit kepada ayah dan ibu\nMohon doa restu menuntut ilmu\n\nLangkah kaki ringan penuh percaya\nMenyongsong hari dengan gembira\nRajin belajar pangkal pandai\nCita-cita tinggi pasti tercapai\n\nDi kelas aku duduk dengan tertib\nMendengarkan guru dengan penuh takzim\nMencatat ilmu dengan teliti\nBertanya santun bila belum mengerti\n\nAnak Indonesia harus bersemangat\nJujur, disiplin, dan selalu giat\nMembangun bangsa dengan prestasi\nMenjadi generasi yang berbudi pekerti`,
+        sumber: 'Sumber: Majalah Ceria Anak Indonesia, https://ceriaanak.id/semangat-pagi',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Tema utama yang diangkat dalam puisi "Semangat Pagi Anak Indonesia" adalah ...',
+        options: [
+          'Kedisiplinan dan semangat anak dalam mempersiapkan diri menuntut ilmu',
+          'Keindahan pemandangan gunung dan sawah pada saat matahari terbit',
+          'Suasana perlombaan olahraga antar-sekolah pada hari kemerdekaan',
+          'Kegiatan berkemah bersama anggota pramuka di akhir pekan'
+        ],
+        answer: 0
+      },
+      // SOAL 22 (Cerpen - Pemahaman Tekstual: Watak Tokoh)
+      {
+        id: 22,
+        type: 'pg',
+        genre: 'Cerpen',
+        kompetensi: 'Pemahaman Tekstual — Mengidentifikasi Watak dan Sifat Tokoh dalam Cerpen',
+        judul: 'Dompet di Jalan Desa',
+        stimulus: `Sore itu Raka pulang dari latihan sepak bola. Ia berjalan kaki melewati jalan desa yang sepi. Tiba-tiba mata Raka melihat benda hitam di pinggir jalan. Raka mendekat dan mengambil benda tersebut. Ternyata benda itu adalah dompet kulit berwarna cokelat. Raka membuka dompet untuk mencari identitas pemiliknya. Di dalamnya terdapat kartu tanda penduduk dan sejumlah uang. Ada juga kartu berobat milik pemilik dompet tersebut. Pemilik dompet itu bernama Pak Harun, warga desa sebelah. Raka segera pulang dan menceritakan temuan itu kepada ayah. Raka mengajak ayahnya mengantar dompet tersebut. Mereka menuju rumah Pak Harun dengan sepeda motor. Pak Harun sangat terkejut dan bahagia melihat dompetnya kembali. Uang di dalam dompet masih utuh tidak berkurang sedikit pun. Pak Harun menceritakan bahwa uang itu untuk membeli obat. Pak Harun memuji kejujuran Raka dengan tulus. Ia hendak memberi hadiah uang kepada Raka. Namun, Raka menolak dengan halus dan sopan. Raka merasa senang bisa membantu orang lain dengan ikhlas.`,
+        sumber: 'Sumber: Cerita Anak Budi Pekerti, Majalah Bobo Nusantara, https://bobo.grid.id/dompet-di-jalan',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Watak tokoh Raka yang paling menonjol dalam cerita pendek di atas adalah ...',
+        options: [
+          'Jujur, peduli, dan ikhlas membantu sesama',
+          'Pemalu, penakut, dan suka menyendiri',
+          'Ceroboh, terburu-buru, dan mudah marah',
+          'Sombong, pamer, dan mengharapkan imbalan'
+        ],
+        answer: 0
+      },
+      // SOAL 23 (Cerpen - Pemahaman Tekstual: Urutan Peristiwa / Latar)
+      {
+        id: 23,
+        type: 'pg',
+        genre: 'Cerpen',
+        kompetensi: 'Pemahaman Tekstual — Menentukan Latar dan Peristiwa dalam Cerpen',
+        judul: 'Kejutan di Kebun Sekolah',
+        stimulus: `Hari Jumat pagi siswa kelas enam bekerja bakti. Mereka membersihkan kebun sayur di belakang sekolah. Siti bertugas mencabut rumput liar di bedengan kangkung. Budi menyiram tanaman tomat dengan gembor air. Edo merapikan pagar bambu di sisi kebun. Tiba-tiba Siti melihat seekor anak kucing terjebak di selokan. Anak kucing itu mengeong pelan karena kedinginan. Bulunya basah kuyup terkena air selokan kotor. Siti segera memanggil Budi dan Ibu Guru. Mereka bersama-sama mengangkat anak kucing itu perlahan. Ibu Guru mengambil handuk bersih dari ruang UKS. Tubuh anak kucing dikeringkan dengan sangat lembut. Budi mengambilkan sedikit susu hangat dari kantin sekolah. Anak kucing itu meminum susu dengan lahap. Setelah hangat, anak kucing terlihat sehat kembali. Siswa membuatkan kotak kardus nyaman sebagai tempat tidurnya. Ibu Guru merawat kucing kecil itu di halaman sekolah. Siswa kelas enam merasa lega telah menyelamatkan hewan kecil tersebut.`,
+        sumber: 'Sumber: Antologi Cerpen Anak Sekolah Dasar, https://literasi-sd.id/kejutan-kebun-sekolah',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Tindakan pertama yang dilakukan Siti dan teman-temannya setelah mengangkat anak kucing dari selokan adalah ...',
+        options: [
+          'Mengeringkan tubuh anak kucing yang kedinginan menggunakan handuk bersih dari ruang UKS.',
+          'Membawa anak kucing tersebut pulang ke rumah masing-masing setelah jam pelajaran selesai.',
+          'Meletakkan kembali anak kucing ke dalam bedengan tanaman tomat di kebun belakang sekolah.',
+          'Memberikan makanan ringan pedas yang dibeli dari pedagang di depan gerbang sekolah.'
+        ],
+        answer: 0
+      },
+      // SOAL 24 (Cerpen - Pemahaman Inferensial: Konflik dan Penyelesaian - MCMA)
+      {
+        id: 24,
+        type: 'mcma',
+        genre: 'Cerpen',
+        kompetensi: 'Pemahaman Inferensial — Mengidentifikasi Masalah dan Penyelesaian dalam Cerpen',
+        judul: 'Kerja Kelompok Membuat Miniatur Rumah Adat',
+        stimulus: `Kelompok Melati mendapat tugas membuat miniatur rumah adat. Anggota kelompok terdiri dari Dini, Tari, dan Bagas. Mereka berencana membuat miniatur rumah Joglo khas Jawa. Awalnya mereka bingung menentukan bahan yang tepat. Harga kayu balok di toko terlalu mahal bagi mereka. Uang tabungan mereka tidak cukup membeli bahan tersebut. Bagas mengusulkan memakai kardus bekas dan stik es krim. Dini dan Tari setuju dengan ide kreatif tersebut. Mereka mengumpulkan kardus bekas dari warung sekitar rumah. Mereka membagi tugas secara adil di rumah Dini. Bagas memotong kardus sesuai pola dinding rumah. Dini menempelkan stik es krim menjadi atap yang rapi. Tari mewarnai bagian dinding dengan cat air cerah. Mereka bekerja sama dengan penuh ketelitian dan kesabaran. Pada hari pengumpulan, miniatur rumah adat tampak sangat indah. Guru memuji kekompakan dan kreativitas kelompok Melati. Karya mereka dipajang di lemari pameran kelas. Semua anggota kelompok tersenyum bangga melihat hasil kerja sama.`,
+        sumber: 'Sumber: Cerita Persahabatan Kelas 6 SD, https://ceritaanak.id/miniatur-rumah-adat',
+        petunjuk: 'Pilihlah 2 (dua) jawaban yang benar dengan memberi tanda centang pada kotak!',
+        pertanyaan: 'Berdasarkan cerpen di atas, manakah dua pernyataan yang tepat mengenai masalah dan cara penyelesaiannya?',
+        options: [
+          'Masalah harga kayu balok yang mahal diselesaikan dengan memanfaatkan kardus bekas dan stik es krim.',
+          'Tugas pembuatan miniatur diselesaikan dengan membagi pekerjaan secara adil kepada setiap anggota.',
+          'Kelompok Melati membatalkan tugas karena tidak memiliki uang untuk membeli kayu balok.',
+          'Seluruh pekerjaan membuat miniatur rumah adat dikerjakan sendirian oleh Bagas tanpa bantuan teman.'
+        ],
+        answer: [0, 1]
+      },
+      // SOAL 25 (Cerpen - Evaluasi dan Apresiasi: Nilai Moral dan Teladan - Kategori)
+      {
+        id: 25,
+        type: 'kategori',
+        genre: 'Cerpen',
+        kompetensi: 'Evaluasi dan Apresiasi — Menilai Keteladanan Tokoh dalam Cerpen',
+        judul: 'Sepatu Baru untuk Adik',
+        stimulus: `Nadia memiliki tabungan dari menyisihkan uang sakunya. Ia menabung selama enam bulan di celengan ayam. Ia berencana membeli tas sekolah baru minggu depan. Tas lama Nadia sebenarnya masih sangat layak dipakai. Warnanya memang sedikit pudar tetapi ritsletingnya masih kuat. Suatu sore Nadia melihat sepatu adiknya sudah robek. Sol sepatu itu terbuka saat adiknya pulang sekolah. Kaki adiknya hampir terluka terkena kerikil jalan. Ayah mereka belum gajian hingga akhir bulan nanti. Nadia merasa kasihan melihat keadaan sepatu adiknya. Keesokan harinya Nadia membuka celengan ayam miliknya. Ia mengajak ibu pergi ke toko sepatu di pasar. Nadia membelikan sepatu sekolah baru untuk adiknya tercinta. Adik Nadia melompat kegirangan dan memeluk kakaknya erat. Ibu tersenyum haru melihat kasih sayang Nadia kepada adiknya. Nadia tetap memakai tas lamanya dengan hati gembira. Baginya, kebahagiaan adik jauh lebih penting daripada tas baru.`,
+        sumber: 'Sumber: Kisah Teladan Anak Indonesia, https://kisahanak.id/sepatu-baru-adik',
+        petunjuk: 'Tentukan apakah setiap pernyataan berikut Benar atau Salah berdasarkan sikap tokoh Nadia!',
+        pertanyaan: 'Berdasarkan perilaku tokoh Nadia dalam cerpen di atas, tentukan kebenaran pernyataan-pernyataan berikut!',
+        colHeaders: ['Benar', 'Salah'],
+        statements: [
+          { text: '1. Nadia menunjukkan sikap rela berkorban dan menyayangi adik dengan mendahulukan kebutuhan adiknya.', correct: true },
+          { text: '2. Nadia menunjukkan sikap bersyukur karena tetap senang memakai tas lamanya yang masih layak.', correct: true },
+          { text: '3. Nadia memaksa ayahnya meminjam uang agar ia tetap bisa membeli tas baru untuk dirinya sendiri.', correct: false }
+        ]
+      },
+      // SOAL 26 (Cerpen - Pemahaman Inferensial: Amanat Cerpen)
+      {
+        id: 26,
+        type: 'pg',
+        genre: 'Cerpen',
+        kompetensi: 'Pemahaman Inferensial — Menyimpulkan Amanat Cerpen',
+        judul: 'Lomba Lari Estafet di Lapangan Desa',
+        stimulus: `Hari itu diadakan lomba lari estafet antar-kelas. Tim kelas enam terdiri dari Edo, Dani, Lani, dan Maya. Mereka sudah berlatih mengoper tongkat selama dua minggu. Setiap sore mereka berlatih di lapangan desa. Penonton bersorak ramai di pinggir lapangan pertandingan. Saat lomba dimulai, Edo berlari sangat kencang di awal. Tongkat berhasil dioper kepada Dani dengan mulus. Dani berlari cepat melewati lintasan kedua dengan stabil. Namun, saat Dani mengoper kepada Lani, tongkat terjatuh. Tim kelas lain langsung menyusul ke posisi terdepan. Lani tidak panik dan segera mengambil tongkat tersebut. Ia berlari sekuat tenaga mengejar ketertinggalan timnya. Maya sebagai pelari terakhir menyambut tongkat dengan sigap. Maya berlari cepat hingga mencapai garis finis kedua. Meski meraih juara dua, mereka tetap saling menyemangati. Tidak ada satu pun yang menyalahkan Lani atas kejadian itu. Mereka bangga telah berjuang bersama dengan sportif.`,
+        sumber: 'Sumber: Cerita Olahraga Anak SD, https://olahragaanak.id/lari-estafet-desa',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Pesan moral yang dapat dipetik dari cerita pendek di atas adalah ...',
+        options: [
+          'Dalam kerja sama tim, kita harus tetap sportif, tidak saling menyalahkan, dan terus berjuang hingga akhir.',
+          'Kemenangan dalam perlombaan hanya dapat diraih jika tidak pernah terjadi kesalahan sedikit pun.',
+          'Pelari yang menjatuhkan tongkat estafet sebaiknya langsung keluar dari lapangan pertandingan.',
+          'Latihan sebelum perlombaan tidak diperlukan apabila anggota tim sudah memiliki tubuh yang tinggi.'
+        ],
+        answer: 0
+      },
+      // SOAL 27 (Berita Terkini - Pemahaman Tekstual: Kosakata Khusus Bidang Teknologi/Energi)
+      {
+        id: 27,
+        type: 'pg',
+        genre: 'Berita Terkini',
+        kompetensi: 'Pemahaman Tekstual — Mengidentifikasi Kosakata Khusus Bidang Energi Terbarukan dalam Berita',
+        judul: 'Pemasangan Panel Surya di Sekolah Dasar Pesisir',
+        stimulus: `Pemerintah memasang panel surya di beberapa sekolah dasar pesisir. Program ini bertujuan menyediakan listrik ramah lingkungan. Panel surya dipasang di atas atap gedung sekolah. Alat tersebut menyerap sinar matahari menjadi energi listrik. Baterai penyimpan daya diletakkan di ruang khusus sekolah. Inverter mengubah arus listrik agar siap digunakan. Listrik bersih digunakan untuk menyalakan lampu dan kipas angin. Komputer di ruang perpustakaan juga beroperasi menggunakan tenaga surya. Kepala sekolah menyambut baik bantuan teknologi hijau ini. Biaya tagihan listrik bulanan sekolah menjadi jauh lebih hemat. Teknisi energi menjelaskan cara perawatan panel secara berkala. Siswa diajak mengenal cara kerja pembangkit listrik tenaga surya. Guru IPA memanfaatkan panel surya sebagai media belajar langsung. Energi terbarukan membantu mengurangi penggunaan bahan bakar fosil. Udara di sekitar sekolah tetap bersih tanpa polusi asap. Program energi bersih akan diperluas ke sekolah lainnya.`,
+        sumber: 'Sumber: Portal Berita Energi Nasional, https://esdm.go.id/berita/panel-surya-sekolah-dasar',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Kelompok kosakata khusus yang berkaitan dengan bidang teknologi energi dalam teks berita di atas adalah ...',
+        options: [
+          'Panel surya, energi terbarukan, baterai penyimpan daya, dan bahan bakar fosil',
+          'Kepala sekolah, guru IPA, siswa, dan petugas perpustakaan',
+          'Atap gedung, ruang kelas, meja belajar, dan papan tulis',
+          'Tagihan bulanan, biaya sekolah, bantuan, dan program kerja'
+        ],
+        answer: 0
+      },
+      // SOAL 28 (Berita Terkini - Pemahaman Tekstual: Unsur Berita Adiksimba - MCMA)
+      {
+        id: 28,
+        type: 'mcma',
+        genre: 'Berita Terkini',
+        kompetensi: 'Pemahaman Tekstual — Mengidentifikasi Unsur Berita (Apa, Siapa, Di Mana, Mengapa)',
+        judul: 'Festival Literasi Anak Kabupaten Tuban Tahun 2026',
+        stimulus: `Dinas Pendidikan Kabupaten Tuban menggelar Festival Literasi Anak. Acara berlangsung di Alun-Alun Tuban pada hari Sabtu pagi. Ratusan siswa sekolah dasar hadir mengikuti berbagai lomba. Lomba meliputi membaca puisi, mendongeng, dan menulis cerita pendek. Ada pula lomba membuat poster ajakan gemar membaca. Bupati Tuban membuka acara festival dengan pemukulan gong. Beliau berpesan agar anak-anak rajin membaca buku setiap hari. Stand pameran buku murah juga tersedia di sekitar lapangan. Penerbit buku anak menampilkan ratusan judul bacaan bermutu. Orang tua tampak antusias mendampingi putra-putri mereka memilih buku. Panitia menyediakan pojok baca gratis bagi seluruh pengunjung. Relawan literasi membacakan cerita bergambar untuk anak-anak kecil. Kegiatan ini bertujuan meningkatkan budaya literasi sejak usia dini. Para pemenang lomba mendapatkan piala dan paket buku bacaan. Festival berjalan meriah, tertib, dan penuh semangat edukasi. Acara serupa direncanakan menjadi agenda tahunan daerah.`,
+        sumber: 'Sumber: Kabar Pendidikan Tuban Terkini, https://dispendik.tubankab.go.id/festival-literasi-2026',
+        petunjuk: 'Pilihlah 2 (dua) jawaban yang benar dengan memberi tanda centang pada kotak!',
+        pertanyaan: 'Berdasarkan teks berita di atas, manakah dua informasi faktual yang sesuai dengan isi berita?',
+        options: [
+          'Festival Literasi Anak diselenggarakan oleh Dinas Pendidikan Kabupaten Tuban di Alun-Alun Tuban.',
+          'Tujuan kegiatan festival tersebut adalah untuk meningkatkan budaya literasi anak sejak usia dini.',
+          'Festival Literasi Anak hanya diikuti oleh mahasiswa perguruan tinggi dari luar provinsi.',
+          'Seluruh pengunjung diwajibkan membayar tiket masuk mahal untuk membaca di pojok baca.'
+        ],
+        answer: [0, 1]
+      },
+      // SOAL 29 (Berita Terkini - Evaluasi dan Apresiasi: Kesesuaian Fakta Berita - Kategori)
+      {
+        id: 29,
+        type: 'kategori',
+        genre: 'Berita Terkini',
+        kompetensi: 'Evaluasi dan Apresiasi — Memverifikasi Kesesuaian Fakta dalam Teks Berita',
+        judul: 'Gerakan Tanam Seribu Pohon di Sepanjang Sungai Bengawan Solo',
+        stimulus: `Relawan lingkungan menanam seribu bibit pohon di bantaran sungai. Kegiatan berlangsung di wilayah aliran Sungai Bengawan Solo. Pelajar, guru, dan warga desa ikut bergotong royong. Kegiatan dimulai sejak pukul tujuh pagi dengan penuh semangat. Jenis pohon yang ditanam meliputi trembesi, bambu, dan mangga. Penanaman pohon bertujuan memperkuat tanggul tanah di tepi sungai. Akar pohon yang kuat dapat mencegah erosi saat debit air naik. Pohon buah juga kelak menghasilkan panen bagi warga sekitar. Pemerintah desa menyediakan bibit pohon dan peralatan cangkul. Sebelum menanam, petugas memberi contoh cara menggali lubang tanam. Setiap pohon diberi penyangga bambu agar tidak mudah roboh. Pagar pelindung dipasang agar bibit aman dari hewan ternak. Warga sepakat merawat dan menyiram bibit pohon secara rutin. Kegiatan penghijauan ini mendapat dukungan penuh dari masyarakat sekitar. Sungai yang bersih dan hijau bermanfaat bagi kehidupan warga.`,
+        sumber: 'Sumber: Warta Lingkungan Jawa Timur, https://jatimprov.go.id/berita/tanam-pohon-bengawan-solo',
+        petunjuk: 'Tentukan apakah setiap pernyataan berikut Sesuai atau Tidak Sesuai dengan fakta pada berita!',
+        pertanyaan: 'Periksalah kesesuaian fakta-fakta berikut berdasarkan isi teks berita di atas!',
+        colHeaders: ['Sesuai', 'Tidak Sesuai'],
+        statements: [
+          { text: '1. Penanaman seribu bibit pohon bertujuan memperkuat tanggul tanah dan mencegah erosi sungai.', correct: true },
+          { text: '2. Bibit pohon yang ditanam diberi penyangga bambu agar berdiri kokoh dan tidak mudah roboh.', correct: true },
+          { text: '3. Kegiatan penanaman pohon hanya dilakukan oleh petugas dinas tanpa melibatkan pelajar dan warga.', correct: false }
+        ]
+      },
+      // SOAL 30 (Berita Terkini - Pemahaman Inferensial: Ide Pokok Berita)
+      {
+        id: 30,
+        type: 'pg',
+        genre: 'Berita Terkini',
+        kompetensi: 'Pemahaman Inferensial — Menentukan Ide Pokok Teks Berita Terkini',
+        judul: 'Inovasi Biopori Siswa SD untuk Cegah Genangan Air Hujan',
+        stimulus: `Siswa kelas enam SD membuat lubang resapan biopori di sekolah. Kegiatan ini dipandu oleh guru pembina lingkungan hidup. Lubang biopori dibuat di halaman yang sering tergenang hujan. Siswa bekerja dalam kelompok kecil secara bergantian. Siswa melubangi tanah menggunakan alat bor tanah sederhana. Kedalaman lubang biopori dibuat sekitar delapan puluh sentimeter. Lubang tersebut kemudian diisi dengan sampah daun kering. Bagian atas lubang ditutup dengan pipa berlubang yang aman. Daun kering akan mengundang cacing tanah untuk membuat rongga. Rongga tanah membantu air hujan meresap lebih cepat. Selain mencegah genangan, biopori menghasilkan pupuk kompos alami. Setelah beberapa bulan, kompos dipanen untuk menyuburkan taman sekolah. Kepala sekolah mengapresiasi inovasi sederhana namun bermanfaat ini. Orang tua siswa juga tertarik menerapkan biopori di rumah. Lingkungan sekolah kini bebas dari genangan air saat musim hujan.`,
+        sumber: 'Sumber: Berita Inovasi Sekolah Adiwiyata, https://adiwiyata.menlhk.go.id/inovasi-biopori-sd',
+        petunjuk: 'Pilihlah satu jawaban yang paling tepat!',
+        pertanyaan: 'Ide pokok yang tepat dari teks berita terkini di atas adalah ...',
+        options: [
+          'Pembuatan lubang resapan biopori oleh siswa SD untuk mencegah genangan air hujan dan menghasilkan kompos.',
+          'Cara membeli alat bor tanah modern di toko peralatan pertanian terdekat oleh kepala sekolah.',
+          'Daftar jenis cacing tanah yang hidup di bawah taman bunga halaman sekolah dasar.',
+          'Pembangunan saluran selokan beton di sepanjang jalan raya di depan gedung sekolah.'
+        ],
+        answer: 0
+      }
+    ];
+
+    // ==================== STATE GLOBAL APLIKASI ====================
+    const VALID_TOKEN = 'VL3URA';
+    const EXAM_DURATION_SECONDS = 75 * 60; // 75 menit (4500 detik)
+    const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbxQKxxFWQJJKMKNe1_KAkmjw38DY-MY4h3gDYP4bROxBTip0x625l0TAWehRqBt3Wdiag/exec";
+
+    let nilaiAkhir = "0.00";
+    let jumlahBenar = 0;
+    let totalSoal = QUESTION_BANK.length;
+
+    let studentData = {
+      nama: '',
+      kelas: '',
+      nisn: '',
+      token: ''
+    };
+
+    let shuffledQuestions = [];
+    let currentIndex = 0;
+    let userAnswers = {}; // key: questionIndex, value: number (PG) | array of numbers (MCMA) | array of booleans/null (Kategori)
+    let doubtFlags = {};  // key: questionIndex, value: boolean
+
+    let remainingSeconds = EXAM_DURATION_SECONDS;
+    let timerInterval = null;
+    let isExamActive = false;
+    let isExamPaused = false;
+    // ==================== KONTROL HALAMAN AWAL & VALIDASI TOKEN ====================
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nama = document.getElementById('namaSiswa').value.trim();
+      const kelas = document.getElementById('kelasSiswa').value.trim();
+      const nisn = document.getElementById('inputNisn').value.trim();
+      const token = document.getElementById('inputToken').value.trim().toUpperCase();
+      const errorBox = document.getElementById('tokenErrorBox');
+      const errorText = document.getElementById('tokenErrorText');
+
+      if (!nama || !kelas || !nisn) {
+        errorText.textContent = 'Harap lengkapi Nama Lengkap, Kelas, dan NISN terlebih dahulu.';
+        errorBox.classList.remove('hidden');
+        return;
+      }
+
+      if (token !== VALID_TOKEN) {
+        errorText.textContent = 'Maaf, token yang Anda masukkan salah. Silakan ulangi Kembali.';
+        errorBox.classList.remove('hidden');
+        document.getElementById('inputToken').focus();
+        return;
+      }
+
+      // Token benar
+      errorBox.classList.add('hidden');
+      studentData = { nama, kelas, nisn, token };
+
+      // Tampilkan Pop-up Identitas & Petunjuk
+      document.getElementById('confirmNama').textContent = `${studentData.nama} (${studentData.kelas})`;
+      document.getElementById('confirmNisn').textContent = studentData.nisn;
+      document.getElementById('confirmToken').textContent = studentData.token;
+      document.getElementById('instructionModal').classList.remove('hidden');
+    });
+
+    function closeInstructionModal() {
+      document.getElementById('instructionModal').classList.add('hidden');
+    }
+
+    // ==================== PENGACAKAN SOAL & MULAI UJIAN ====================
+    function shuffleArray(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function startExam() {
+      closeInstructionModal();
+
+      // Acak 30 soal
+      shuffledQuestions = shuffleArray(QUESTION_BANK);
+      currentIndex = 0;
+      userAnswers = {};
+      doubtFlags = {};
+      remainingSeconds = EXAM_DURATION_SECONDS;
+      isExamActive = true;
+      isExamPaused = false;
+      // Inisialisasi struktur jawaban kosong untuk tiap soal
+      shuffledQuestions.forEach((q, idx) => {
+        if (q.type === 'pg') {
+          userAnswers[idx] = null;
+        } else if (q.type === 'mcma') {
+          userAnswers[idx] = [];
+        } else if (q.type === 'kategori') {
+          userAnswers[idx] = [null, null, null];
+        }
+        doubtFlags[idx] = false;
+      });
+
+      // Set identitas di header halaman soal
+      document.getElementById('headerStudentName').textContent = studentData.nama;
+      document.getElementById('headerStudentNisn').textContent = studentData.nisn;
+
+      // Pindah tampilan dari Login ke Halaman Ujian
+      document.getElementById('loginPage').classList.add('hidden');
+      document.getElementById('resultPage').classList.add('hidden');
+      document.getElementById('examPage').classList.remove('hidden');
+
+      renderNavGrid();
+      renderQuestion(0);
+      startCountdownTimer();
+    }
+
+    // ==================== TIMER MUNDUR 75 MENIT ====================
+    function startCountdownTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      updateTimerDisplay();
+
+      timerInterval = setInterval(() => {
+        if (isExamPaused) return;
+        remainingSeconds--;
+        updateTimerDisplay();
+
+        if (remainingSeconds <= 0) {
+          clearInterval(timerInterval);
+          handleTimeExpired();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(Math.max(0, remainingSeconds) / 60);
+      const secs = Math.max(0, remainingSeconds) % 60;
+      const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      const displayEl = document.getElementById('countdownDisplay');
+      displayEl.textContent = formatted;
+
+      // Peringatan warna merah jika waktu kurang dari 5 menit
+      if (remainingSeconds <= 300) {
+        displayEl.classList.remove('text-amber-300');
+        displayEl.classList.add('text-red-400');
+      } else {
+        displayEl.classList.remove('text-red-400');
+        displayEl.classList.add('text-amber-300');
+      }
+    }
+
+    function handleTimeExpired() {
+      isExamActive = false;
+      const result = calculateFinalScore();
+      nilaiAkhir = result.formattedScore;
+      jumlahBenar = result.correctCount;
+      totalSoal = shuffledQuestions.length;
+
+      kirimNilai();
+
+      // Simpan otomatis riwayat pengerjaan ke localStorage
+      try {
+        const record = {
+          nama: studentData.nama,
+          kelas: studentData.kelas,
+          nisn: studentData.nisn,
+          score: result.formattedScore,
+          correctCount: result.correctCount,
+          status: 'Waktu Habis (Otomatis Tersimpan)',
+          timestamp: new Date().toISOString()
+        };
+        localStorage.setItem('tka_mlangi2_last_submission', JSON.stringify(record));
+      } catch (err) {
+        console.warn('Penyimpanan lokal tidak tersedia:', err);
+      }
+
+      // Kembali otomatis ke menu awal sesuai ketentuan dan tampilkan pemberitahuan
+      returnToMainMenu();
+      document.getElementById('timeUpNotice').classList.remove('hidden');
+    }
+
+    // ==================== RENDER SOAL & INTERAKSI JAWABAN ====================
+    function isQuestionAnswered(idx) {
+      const q = shuffledQuestions[idx];
+      const ans = userAnswers[idx];
+      if (!q) return false;
+
+      if (q.type === 'pg') {
+        return ans !== null && ans !== undefined;
+      } else if (q.type === 'mcma') {
+        return Array.isArray(ans) && ans.length > 0;
+      } else if (q.type === 'kategori') {
+        // Dianggap sudah dikerjakan jika ketiga pernyataan sudah diisi
+        return Array.isArray(ans) && ans.every(val => val === true || val === false);
+      }
+      return false;
+    }
+
+    function renderQuestion(idx) {
+      currentIndex = idx;
+      const q = shuffledQuestions[idx];
+
+      // Nomor Soal
+      document.getElementById('currentQuestionNumber').textContent = idx + 1;
+
+      // Render Judul Teks
+      const titleEl = document.getElementById('stimulusTitle');
+      titleEl.textContent = q.judul || '';
+
+      // Render Teks Bacaan (mendukung baris baru untuk puisi maupun paragraf)
+      const textEl = document.getElementById('stimulusText');
+      if (q.genre === 'Puisi') {
+        textEl.classList.remove('text-justify');
+        textEl.classList.add('text-left', 'whitespace-pre-line');
+        textEl.textContent = q.stimulus;
+      } else {
+        textEl.classList.remove('text-left', 'whitespace-pre-line');
+        textEl.classList.add('text-justify');
+        textEl.innerHTML = q.stimulus
+          .split('\n\n')
+          .map(p => `<p>${p}</p>`)
+          .join('');
+      }
+
+      // Render Sumber Bacaan (Arial 8pt Miring, Link berwarna biru)
+      const sourceEl = document.getElementById('stimulusSource');
+      const formattedSource = (q.sumber || '').replace(
+        /(https?:\/\/[^\s]+)/g,
+        '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">$1</a>'
+      );
+      sourceEl.innerHTML = formattedSource;
+
+      // Render Petunjuk & Pokok Soal
+      document.getElementById('questionInstruction').textContent = q.petunjuk;
+      document.getElementById('questionStem').textContent = q.pertanyaan;
+
+      // Render Opsi Jawaban sesuai tipe soal
+      const optionsContainer = document.getElementById('optionsContainer');
+      optionsContainer.innerHTML = '';
+
+      if (q.type === 'pg') {
+        renderMultipleChoiceOptions(q, idx, optionsContainer);
+      } else if (q.type === 'mcma') {
+        renderMcmaOptions(q, idx, optionsContainer);
+      } else if (q.type === 'kategori') {
+        renderCategoryTable(q, idx, optionsContainer);
+      }
+
+      // Perbarui status visual tombol Ragu-ragu
+      const doubtVisual = document.getElementById('doubtCheckVisual');
+      if (doubtFlags[idx]) {
+        doubtVisual.classList.add('bg-white');
+      } else {
+        doubtVisual.classList.remove('bg-white');
+      }
+
+      // Atur visibilitas tombol Selanjutnya vs Selesai (muncul di soal terakhir)
+      const isLastQuestion = idx === shuffledQuestions.length - 1;
+      const btnNext = document.getElementById('btnNext');
+      const btnFinish = document.getElementById('btnFinish');
+
+      if (isLastQuestion) {
+        btnNext.classList.add('hidden');
+        btnFinish.classList.remove('hidden');
+      } else {
+        btnNext.classList.remove('hidden');
+        btnFinish.classList.add('hidden');
+      }
+
+      renderNavGrid();
+      updateSidebarStats();
+    }
+
+    // 1. Render Pilihan Ganda (Lingkaran berisi huruf A/B/C/D, berubah warna saat diklik)
+    function renderMultipleChoiceOptions(q, qIdx, container) {
+      const letters = ['A', 'B', 'C', 'D'];
+      const selected = userAnswers[qIdx];
+
+      q.options.forEach((optText, optIdx) => {
+        const isSelected = selected === optIdx;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.onclick = () => selectPgOption(qIdx, optIdx);
+        btn.className = `w-full text-left p-3.5 rounded-xl border transition flex items-start gap-3.5 cursor-pointer ${
+          isSelected
+            ? 'bg-blue-50 border-blue-600 ring-1 ring-blue-600'
+            : 'bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-300'
+        }`;
+
+        btn.innerHTML = `
+          <span class="w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 border transition ${
+            isSelected
+              ? 'bg-blue-700 text-white border-blue-700'
+              : 'bg-slate-100 text-slate-700 border-slate-300'
+          }">
+            ${letters[optIdx]}
+          </span>
+          <span class="font-arial-11 text-slate-800">${optText}</span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    function selectPgOption(qIdx, optIdx) {
+      userAnswers[qIdx] = optIdx;
+      renderQuestion(qIdx);
+    }
+
+    // 2. Render MCMA (Kotak di depan opsi, muncul centang di dalam kotak saat diklik)
+    function renderMcmaOptions(q, qIdx, container) {
+      const selectedList = Array.isArray(userAnswers[qIdx]) ? userAnswers[qIdx] : [];
+
+      q.options.forEach((optText, optIdx) => {
+        const isChecked = selectedList.includes(optIdx);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.onclick = () => toggleMcmaOption(qIdx, optIdx);
+        btn.className = `w-full text-left p-3.5 rounded-xl border transition flex items-start gap-3.5 cursor-pointer ${
+          isChecked
+            ? 'bg-blue-50 border-blue-600 ring-1 ring-blue-600'
+            : 'bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-300'
+        }`;
+
+        btn.innerHTML = `
+          <span class="w-6 h-6 rounded-md flex items-center justify-center shrink-0 mt-0.5 border-2 transition ${
+            isChecked
+              ? 'bg-blue-700 border-blue-700 text-white'
+              : 'bg-white border-slate-400 text-transparent'
+          }">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+          <span class="font-arial-11 text-slate-800">${optText}</span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    function toggleMcmaOption(qIdx, optIdx) {
+      let current = Array.isArray(userAnswers[qIdx]) ? [...userAnswers[qIdx]] : [];
+      if (current.includes(optIdx)) {
+        current = current.filter(item => item !== optIdx);
+      } else {
+        current.push(optIdx);
+      }
+      userAnswers[qIdx] = current;
+      renderQuestion(qIdx);
+    }
+
+    // 3. Render Kategori (Tabel 3 kolom: Pernyataan, Benar/Sesuai, Salah/Tidak Sesuai, muncul centang saat diklik)
+    function renderCategoryTable(q, qIdx, container) {
+      const headers = q.colHeaders || ['Benar', 'Salah'];
+      const currentAns = Array.isArray(userAnswers[qIdx]) ? userAnswers[qIdx] : [null, null, null];
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'overflow-x-auto rounded-xl border border-slate-300';
+
+      let rowsHtml = '';
+      q.statements.forEach((stmt, sIdx) => {
+        const val = currentAns[sIdx];
+        const isTrueSelected = val === true;
+        const isFalseSelected = val === false;
+
+        rowsHtml += `
+          <tr class="border-t border-slate-200 ${sIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50/60'}">
+            <td class="p-3.5 font-arial-11 text-slate-800">${stmt.text}</td>
+            <td class="p-3 text-center align-middle">
+              <button
+                type="button"
+                onclick="selectCategoryChoice(${qIdx}, ${sIdx}, true)"
+                class="w-8 h-8 mx-auto rounded-lg border-2 flex items-center justify-center transition cursor-pointer ${
+                  isTrueSelected
+                    ? 'bg-emerald-600 border-emerald-600 text-white shadow-xs'
+                    : 'bg-white border-slate-300 hover:border-emerald-500 text-transparent'
+                }"
+                aria-label="${headers[0]}"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </button>
+            </td>
+            <td class="p-3 text-center align-middle">
+              <button
+                type="button"
+                onclick="selectCategoryChoice(${qIdx}, ${sIdx}, false)"
+                class="w-8 h-8 mx-auto rounded-lg border-2 flex items-center justify-center transition cursor-pointer ${
+                  isFalseSelected
+                    ? 'bg-rose-600 border-rose-600 text-white shadow-xs'
+                    : 'bg-white border-slate-300 hover:border-rose-500 text-transparent'
+                }"
+                aria-label="${headers[1]}"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        `;
+      });
+
+      wrapper.innerHTML = `
+        <table class="w-full border-collapse text-left">
+          <thead>
+            <tr class="bg-blue-800 text-white font-arial-11 font-bold">
+              <th class="p-3.5">Pernyataan</th>
+              <th class="p-3.5 text-center w-28 sm:w-32">${headers[0]}</th>
+              <th class="p-3.5 text-center w-28 sm:w-32">${headers[1]}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      `;
+
+      container.appendChild(wrapper);
+    }
+
+    function selectCategoryChoice(qIdx, stmtIdx, boolVal) {
+      const arr = Array.isArray(userAnswers[qIdx]) ? [...userAnswers[qIdx]] : [null, null, null];
+      arr[stmtIdx] = boolVal;
+      userAnswers[qIdx] = arr;
+      renderQuestion(qIdx);
+    }
+
+    // ==================== NAVIGASI NOMOR SOAL & TOMBOL AKSI ====================
+    function renderNavGrid() {
+      const grid = document.getElementById('questionNavGrid');
+      grid.innerHTML = '';
+
+      shuffledQuestions.forEach((_, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = idx + 1;
+        btn.onclick = () => renderQuestion(idx);
+
+        const isCurrent = idx === currentIndex;
+        const isDoubt = doubtFlags[idx];
+        const isAnswered = isQuestionAnswered(idx);
+
+        let colorClass = 'bg-white text-slate-700 border-2 border-slate-300 hover:border-blue-500';
+        if (isCurrent) {
+          colorClass = 'bg-blue-700 text-white border-2 border-blue-700 ring-2 ring-blue-300';
+        } else if (isDoubt) {
+          colorClass = 'bg-amber-500 text-white border-2 border-amber-500 hover:bg-amber-600';
+        } else if (isAnswered) {
+          colorClass = 'bg-emerald-600 text-white border-2 border-emerald-600 hover:bg-emerald-700';
+        }
+
+        btn.className = `h-10 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer flex items-center justify-center ${colorClass}`;
+        grid.appendChild(btn);
+      });
+    }
+
+    function updateSidebarStats() {
+      let answered = 0;
+      let doubt = 0;
+      const total = shuffledQuestions.length;
+
+      for (let i = 0; i < total; i++) {
+        if (isQuestionAnswered(i)) answered++;
+        if (doubtFlags[i]) doubt++;
+      }
+
+      document.getElementById('infoAnsweredCount').textContent = `${answered} / ${total}`;
+      document.getElementById('infoDoubtCount').textContent = `${doubt}`;
+      document.getElementById('infoUnansweredCount').textContent = `${total - answered}`;
+    }
+
+    function nextQuestion() {
+      if (currentIndex < shuffledQuestions.length - 1) {
+        renderQuestion(currentIndex + 1);
+      }
+    }
+
+    function skipQuestion() {
+      if (currentIndex < shuffledQuestions.length - 1) {
+        renderQuestion(currentIndex + 1);
+      } else {
+        // Jika berada di soal terakhir, kembali ke soal pertama yang belum dijawab
+        const firstUnanswered = shuffledQuestions.findIndex((_, idx) => !isQuestionAnswered(idx));
+        renderQuestion(firstUnanswered !== -1 ? firstUnanswered : 0);
+      }
+    }
+
+    function toggleDoubt() {
+      doubtFlags[currentIndex] = !doubtFlags[currentIndex];
+      renderQuestion(currentIndex);
+    }
+
+    // ==================== PENILAIAN & HALAMAN AKHIR ====================
+    function openFinishConfirmModal() {
+      let unanswered = 0;
+      shuffledQuestions.forEach((_, idx) => {
+        if (!isQuestionAnswered(idx)) unanswered++;
+      });
+
+      const descEl = document.getElementById('finishConfirmDesc');
+      if (unanswered > 0) {
+        descEl.textContent = `Masih terdapat ${unanswered} soal yang belum dijawab. Apakah Anda yakin ingin mengakhiri simulasi TKA sekarang dan melihat hasil nilai?`;
+      } else {
+        descEl.textContent = 'Seluruh 30 soal telah Anda kerjakan. Apakah Anda yakin ingin mengakhiri simulasi TKA sekarang dan melihat hasil nilai?';
+      }
+
+      document.getElementById('finishConfirmModal').classList.remove('hidden');
+    }
+
+    function closeFinishConfirmModal() {
+      document.getElementById('finishConfirmModal').classList.add('hidden');
+    }
+
+    function calculateFinalScore() {
+      let correctCount = 0;
+      const total = shuffledQuestions.length;
+
+      shuffledQuestions.forEach((q, idx) => {
+        const ans = userAnswers[idx];
+
+        if (q.type === 'pg') {
+          if (ans === q.answer) {
+            correctCount++;
+          }
+        } else if (q.type === 'mcma') {
+          if (Array.isArray(ans) && Array.isArray(q.answer)) {
+            const sortedUser = [...ans].sort((a, b) => a - b);
+            const sortedKey = [...q.answer].sort((a, b) => a - b);
+            if (
+              sortedUser.length === sortedKey.length &&
+              sortedUser.every((val, i) => val === sortedKey[i])
+            ) {
+              correctCount++;
+            }
+          }
+        } else if (q.type === 'kategori') {
+          // Aturan nilai: 3 pernyataan wajib benar semua untuk memperoleh nilai
+          if (
+            Array.isArray(ans) &&
+            ans.length === q.statements.length &&
+            q.statements.every((stmt, sIdx) => ans[sIdx] === stmt.correct)
+          ) {
+            correctCount++;
+          }
+        }
+      });
+
+      const wrongCount = total - correctCount;
+      const rawScore = (correctCount * 100) / total;
+      const formattedScore = rawScore.toFixed(2);
+
+      return { correctCount, wrongCount, formattedScore };
+    }
+
+    function kirimNilai() {
+      const statusBox = document.getElementById('syncStatusBox');
+      if (statusBox) {
+        statusBox.textContent = 'Menyimpan nilai ke server...';
+        statusBox.classList.remove('hidden', 'bg-rose-50', 'border-rose-200', 'text-rose-800');
+        statusBox.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-800');
+      }
+
+      // Ambil data dari input di HTML
+      var dataKirim = {
+        nama: document.getElementById("namaSiswa").value || studentData.nama,
+        kelas: document.getElementById("kelasSiswa").value || studentData.kelas,
+        sekolah: "SDN Mlangi 2",
+        nilai: nilaiAkhir, // variabel nilai di kode
+        benar: jumlahBenar,
+        total: totalSoal
+      };
+
+      fetch(URL_APPS_SCRIPT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataKirim)
+      })
+      .then(() => {
+        if (statusBox) {
+          statusBox.textContent = 'Nilai berhasil tersimpan! Terima kasih.';
+          statusBox.classList.remove('hidden');
+        }
+      })
+      .catch((err) => {
+        console.warn('Gagal mengirim nilai:', err);
+        if (statusBox) {
+          statusBox.textContent = 'Gagal terhubung ke server. Silakan klik Kirim Ulang Nilai.';
+          statusBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-800');
+          statusBox.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-800');
+        }
+      });
+    }
+
+    function finishExam() {
+      closeFinishConfirmModal();
+      isExamActive = false;
+      if (timerInterval) clearInterval(timerInterval);
+
+      const result = calculateFinalScore();
+      nilaiAkhir = result.formattedScore;
+      jumlahBenar = result.correctCount;
+      totalSoal = shuffledQuestions.length;
+
+      document.getElementById('resultStudentInfo').textContent = `${studentData.nama} - Kelas ${studentData.kelas} (NISN: ${studentData.nisn})`;
+      document.getElementById('finalScoreDisplay').textContent = result.formattedScore;
+      document.getElementById('resultCorrectCount').textContent = `${result.correctCount} Soal`;
+      document.getElementById('resultWrongCount').textContent = `${result.wrongCount} Soal`;
+
+      document.getElementById('examPage').classList.add('hidden');
+      document.getElementById('resultPage').classList.remove('hidden');
+
+      kirimNilai();
+    }
+
+    function returnToMainMenu() {
+      if (timerInterval) clearInterval(timerInterval);
+      isExamActive = false;
+      isExamPaused = false;
+
+      document.getElementById('examPage').classList.add('hidden');
+      document.getElementById('resultPage').classList.add('hidden');
+      document.getElementById('instructionModal').classList.add('hidden');
+      document.getElementById('finishConfirmModal').classList.add('hidden');
+      document.getElementById('facePauseModal').classList.add('hidden');
+      document.getElementById('kelasSiswa').value = '';
+      document.getElementById('inputNisn').value = '';
+      document.getElementById('inputToken').value = '';
+      document.getElementById('tokenErrorBox').classList.add('hidden');
+      document.getElementById('timeUpNotice').classList.add('hidden');
+      const statusBox = document.getElementById('syncStatusBox');
+      if (statusBox) statusBox.classList.add('hidden');
+
+      document.getElementById('loginPage').classList.remove('hidden');
+    }
+
+    // ==================== SISTEM KAMERA PENGAWAS SENSITIF GERAK & DETEKSI WAJAH ====================
+    let proctorStream = null;
+    let faceMonitorInterval = null;
+    let previousFrameData = null;
+    let noFaceCounter = 0;
+    let staticFrameCounter = 0;
+    let nativeFaceDetector = null;
+
+    if ('FaceDetector' in window) {
+      try {
+        nativeFaceDetector = new window.FaceDetector({ fastMode: true, maxDetectedFaces: 2 });
+      } catch (e) {
+        nativeFaceDetector = null;
+      }
+    }
+
+    function attachStreamToVideos(stream) {
+      const modalVideo = document.getElementById('modalProctorVideo');
+      const examVideo = document.getElementById('examProctorVideo');
+      if (modalVideo) modalVideo.srcObject = stream;
+      if (examVideo) examVideo.srcObject = stream;
+    }
+
+    async function initProctorCamera() {
+      const modalBlocked = document.getElementById('modalCameraBlocked');
+      const examBlocked = document.getElementById('examCameraBlocked');
+      const retryModal = document.getElementById('btnRetryCameraModal');
+      const retryExam = document.getElementById('btnRetryCameraExam');
+
+      try {
+        if (proctorStream) {
+          proctorStream.getTracks().forEach(track => track.stop());
+        }
+
+        proctorStream = await navigator.mediaDevices.getUserMedia({
+          video: { width: { ideal: 320 }, height: { ideal: 240 }, facingMode: 'user' },
+          audio: false
+        });
+
+        attachStreamToVideos(proctorStream);
+
+        if (modalBlocked) modalBlocked.classList.add('hidden');
+        if (examBlocked) examBlocked.classList.add('hidden');
+        if (retryModal) retryModal.classList.add('hidden');
+        if (retryExam) retryExam.classList.add('hidden');
+
+        hideFaceWarning();
+        startFaceAndMotionMonitoring();
+      } catch (err) {
+        console.warn('Kamera pengawas tidak dapat diakses:', err);
+        if (modalBlocked) modalBlocked.classList.remove('hidden');
+        if (examBlocked) examBlocked.classList.remove('hidden');
+        if (retryModal) retryModal.classList.remove('hidden');
+        if (retryExam) retryExam.classList.remove('hidden');
+
+        showFaceWarning('Kamera pengawas belum aktif! Mohon izinkan akses kamera pada browser Anda.');
+      }
+    }
+
+    function showFaceWarning(message) {
+      const banner = document.getElementById('faceWarningBanner');
+      const textEl = document.getElementById('faceWarningText');
+      const pauseModal = document.getElementById('facePauseModal');
+      const pauseTextEl = document.getElementById('facePauseText');
+      const modalBox = document.getElementById('modalProctorBox');
+      const examBox = document.getElementById('examProctorBox');
+      const modalBadge = document.getElementById('modalProctorBadge');
+      const examBadge = document.getElementById('examProctorBadge');
+      const modalDot = document.getElementById('modalProctorDot');
+      const examDot = document.getElementById('examProctorDot');
+
+      if (isExamActive) {
+        isExamPaused = true;
+        if (pauseTextEl) {
+          pauseTextEl.textContent = `${message} Pengerjaan soal dijeda sementara sampai Anda menekan tombol "Saya Mengerti, Lanjutkan Ujian".`;
+        }
+        if (pauseModal) pauseModal.classList.remove('hidden');
+        if (banner) banner.classList.add('hidden');
+      } else {
+        if (textEl) textEl.textContent = message;
+        if (banner) banner.classList.remove('hidden');
+      }
+
+      [modalBox, examBox].forEach(box => {
+        if (box) {
+          box.classList.remove('border-slate-700');
+          box.classList.add('border-rose-500', 'ring-2', 'ring-rose-500/40');
+        }
+      });
+
+      [modalDot, examDot].forEach(dot => {
+        if (dot) dot.className = 'w-2 h-2 rounded-full bg-rose-500 animate-ping';
+      });
+
+      if (modalBadge) {
+        modalBadge.className = 'mt-1 text-[10px] font-bold text-rose-300 text-center truncate';
+        modalBadge.textContent = 'PERINGATAN: Wajah Hilang!';
+      }
+      if (examBadge) {
+        examBadge.className = 'block text-[10px] sm:text-xs font-bold text-rose-300 leading-tight mt-0.5';
+        examBadge.textContent = 'Wajah Hilang!';
+      }
+    }
+
+    function acknowledgeFaceWarning() {
+      const pauseModal = document.getElementById('facePauseModal');
+      if (pauseModal) pauseModal.classList.add('hidden');
+      isExamPaused = false;
+      noFaceCounter = 0;
+      staticFrameCounter = 0;
+      hideFaceWarning();
+    }
+
+    function hideFaceWarning() {
+      if (isExamPaused) return;
+      const banner = document.getElementById('faceWarningBanner');
+      const modalBox = document.getElementById('modalProctorBox');
+      const examBox = document.getElementById('examProctorBox');
+      const modalBadge = document.getElementById('modalProctorBadge');
+      const examBadge = document.getElementById('examProctorBadge');
+      const modalDot = document.getElementById('modalProctorDot');
+      const examDot = document.getElementById('examProctorDot');
+
+      if (banner) banner.classList.add('hidden');
+
+      [modalBox, examBox].forEach(box => {
+        if (box) {
+          box.classList.remove('border-rose-500', 'ring-2', 'ring-rose-500/40');
+          box.classList.add('border-slate-700');
+        }
+      });
+
+      [modalDot, examDot].forEach(dot => {
+        if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+      });
+
+      if (modalBadge) {
+        modalBadge.className = 'mt-1 text-[10px] font-semibold text-emerald-300 text-center truncate';
+        modalBadge.textContent = 'Wajah Terdeteksi • Aman';
+      }
+      if (examBadge) {
+        examBadge.className = 'block text-[10px] sm:text-xs font-bold text-emerald-300 leading-tight mt-0.5';
+        examBadge.textContent = 'Wajah Aktif';
+      }
+    }
+
+    function startFaceAndMotionMonitoring() {
+      if (faceMonitorInterval) clearInterval(faceMonitorInterval);
+      const modalVideo = document.getElementById('modalProctorVideo');
+      const examVideo = document.getElementById('examProctorVideo');
+      const canvasEl = document.getElementById('proctorCanvas');
+      const ctx = canvasEl.getContext('2d', { willReadFrequently: true });
+
+      faceMonitorInterval = setInterval(async () => {
+        if (isExamPaused) return;
+        const activeVideo = (examVideo && examVideo.readyState >= 2) ? examVideo : modalVideo;
+        if (!proctorStream || !activeVideo || activeVideo.readyState < 2) return;
+
+        const w = canvasEl.width;
+        const h = canvasEl.height;
+        ctx.drawImage(activeVideo, 0, 0, w, h);
+        const frame = ctx.getImageData(0, 0, w, h).data;
+
+        // 1. Analisis area tengah terfokus pada posisi wajah & mata/kontras fitur wajah
+        let skinLikePixels = 0;
+        let centerPixels = 0;
+        let brightnessSum = 0;
+        let contrastDiffSum = 0;
+
+        for (let y = Math.floor(h * 0.20); y < Math.floor(h * 0.80); y += 2) {
+          for (let x = Math.floor(w * 0.28); x < Math.floor(w * 0.72); x += 2) {
+            const idx = (y * w + x) * 4;
+            const r = frame[idx];
+            const g = frame[idx + 1];
+            const b = frame[idx + 2];
+            const lum = (r + g + b) / 3;
+            brightnessSum += lum;
+            centerPixels++;
+
+            // Hitung kontras lokal (fitur mata, alis, hidung, mulut) agar tidak tertipu dinding polos
+            if (x + 2 < w) {
+              const nextIdx = (y * w + (x + 2)) * 4;
+              const nextLum = (frame[nextIdx] + frame[nextIdx + 1] + frame[nextIdx + 2]) / 3;
+              contrastDiffSum += Math.abs(lum - nextLum);
+            }
+
+            if (r > 65 && g > 40 && b > 22 && r > g && r > b && Math.abs(r - g) > 12) {
+              skinLikePixels++;
+            }
+          }
+        }
+
+        const avgBrightness = brightnessSum / Math.max(1, centerPixels);
+        const skinRatio = skinLikePixels / Math.max(1, centerPixels);
+        const avgContrast = contrastDiffSum / Math.max(1, centerPixels);
+
+        // 2. Analisis sensitivitas gestur & gerakan mikro antar-frame
+        let motionScore = 0;
+        if (previousFrameData && previousFrameData.length === frame.length) {
+          let diffCount = 0;
+          let sampled = 0;
+          for (let i = 0; i < frame.length; i += 12) {
+            const diff =
+              Math.abs(frame[i] - previousFrameData[i]) +
+              Math.abs(frame[i + 1] - previousFrameData[i + 1]) +
+              Math.abs(frame[i + 2] - previousFrameData[i + 2]);
+            if (diff > 22) diffCount++;
+            sampled++;
+          }
+          motionScore = diffCount / Math.max(1, sampled);
+        }
+        previousFrameData = new Uint8ClampedArray(frame);
+
+        // 3. Deteksi wajah sensitif (FaceDetector bawaan + validasi posisi tengah + kontras fitur wajah)
+        let facePresent = false;
+        if (nativeFaceDetector) {
+          try {
+            const faces = await nativeFaceDetector.detect(activeVideo);
+            if (faces && faces.length > 0) {
+              const box = faces[0].boundingBox;
+              const vidW = activeVideo.videoWidth || 320;
+              const vidH = activeVideo.videoHeight || 240;
+              const faceCenterX = (box.x + box.width / 2) / vidW;
+              const faceCenterY = (box.y + box.height / 2) / vidH;
+              const faceAreaRatio = (box.width * box.height) / (vidW * vidH);
+              // Pastikan wajah menghadap ke tengah kamera dan jaraknya sesuai
+              facePresent =
+                faceCenterX >= 0.22 && faceCenterX <= 0.78 &&
+                faceCenterY >= 0.15 && faceCenterY <= 0.85 &&
+                faceAreaRatio >= 0.04;
+            }
+          } catch (e) {
+            facePresent = avgBrightness > 30 && avgBrightness < 240 && skinRatio > 0.14 && avgContrast > 4.5;
+          }
+        } else {
+          facePresent = avgBrightness > 30 && avgBrightness < 240 && skinRatio > 0.14 && avgContrast > 4.5;
+        }
+
+        if (!facePresent) {
+          noFaceCounter++;
+        } else {
+          noFaceCounter = 0;
+        }
+
+        if (motionScore < 0.004) {
+          staticFrameCounter++;
+        } else {
+          staticFrameCounter = 0;
+        }
+
+        // Respon cepat (1.2 detik jika wajah hilang/menoleh, atau 7.2 detik tanpa gestur gerak)
+        if (noFaceCounter >= 2) {
+          showFaceWarning('Wajah Anda tidak terdeteksi atau berpaling dari layar!');
+        } else if (staticFrameCounter >= 12) {
+          showFaceWarning('Tidak terdeteksi gestur gerak peserta di depan kamera. Pastikan Anda berada di depan layar!');
+        } else {
+          hideFaceWarning();
+        }
+      }, 600);
+    }
+
+    // Jalankan kamera pengawas secara otomatis sejak halaman web pertama kali dibuka
+    window.addEventListener('DOMContentLoaded', () => {
+      initProctorCamera();
+    });
+  </script>
+</body>
+</html>
